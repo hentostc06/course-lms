@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 960 540" role="img">
+<rect width="960" height="540" fill="#364344"/>
+<circle cx="830" cy="150" r="240"
+    fill="#FFFFFF" fill-opacity=".10"/>
+<circle cx="830" cy="150" r="171"
+    fill="none" stroke="#FFF9F2"
+    stroke-opacity=".38" stroke-width="2"/>
+<path d="M685 0L960 405M735 0L960 334M785 0L960 263"
+    stroke="#FFF9F2" stroke-opacity=".13"
+    stroke-width="7"/>
+<rect x="58" y="52" width="85" height="29"
+    fill="#FFF9F2"/>
+<text x="73" y="73" font-family="Arial"
+    font-size="17" font-weight="900"
+    fill="#364344">DEMO</text>
+<text x="159" y="73" font-family="Arial"
+    font-size="17" fill="#FFF9F2">COURSE</text>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="68" y="220" font-size="50" font-weight="800" letter-spacing="-2" fill="#FFF9F2">Docker &amp; Deployment Aplikasi</text>
+</g>
+<path d="M62 465H896" stroke="#FFF9F2"/>
+<text x="65" y="507" font-family="Arial"
+    font-size="18" font-weight="700"
+    fill="#FFF9F2">INFRASTRUKTUR &amp; KEAMANAN</text>
+<text x="869" y="506" font-family="Arial"
+    font-size="23" font-weight="900"
+    text-anchor="end" fill="#FFF9F2">13</text>
+</svg>

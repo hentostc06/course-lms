@@ -30,7 +30,7 @@ class CourseDetailsRequest extends FormRequest
             'requirements.*' => ['required', 'string', 'max:250'],
             'audience' => ['nullable', 'array', 'max:15'],
             'audience.*' => ['required', 'string', 'max:250'],
-            'thumbnail_url' => ['nullable', 'url:http,https', 'max:2000'],
+            'thumbnail_url' => ['nullable', 'url:http,https', 'max:255'],
         ];
     }
 }

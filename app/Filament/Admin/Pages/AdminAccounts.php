@@ -3,16 +3,21 @@ namespace App\Filament\Admin\Pages;
 
 use App\Models\User;
 use App\Domain\Identity\Models\Role;
-use Filament\Pages\Page;
+use App\Domain\Identity\Models\AdminAuditEvent;
+use Illuminate\Database\Eloquent\Collection;
+use Throwable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
-class AdminAccounts extends Page
+class AdminAccounts extends \App\Filament\Admin\AdminPage
 {
     protected static ?string $slug = 'kelola-admin';
+    protected static string | \UnitEnum | null $navigationGroup = 'Pengguna & Akses';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-shield-check';
+    protected static ?int $navigationSort = 8;
     protected string $view = 'filament.admin.pages.admin-accounts';
 
     public string $name = '';
@@ -27,13 +32,14 @@ class AdminAccounts extends Page
     public string $ownPasswordConfirmation = '';
     public string $notice = '';
 
-    public static function canAccess(): bool { return auth()->user()?->hasRole('super_admin') === true; }
+    public static function canAccess(): bool { return parent::canAccess() && auth()->user()->hasRole('super_admin'); }
     public static function getNavigationLabel(): string { return 'Kelola administrator'; }
     public function getTitle(): string { return 'Pengelolaan administrator'; }
     public function mount(): void { abort_unless(static::canAccess(), 403); }
     private function guard(): void { abort_unless(static::canAccess(), 403); }
 
-    public function getAdmins()
+    /** @return Collection<int, User> */
+    public function getAdmins(): Collection
     {
         $this->guard();
         return User::query()->whereHas('roles', fn ($q) => $q->whereIn('name', ['admin', 'super_admin']))
@@ -57,13 +63,16 @@ class AdminAccounts extends Page
                 'name' => $data['name'], 'email' => $data['email'],
                 'password' => $data['password'],
             ]);
-            $created->forceFill(['email_verified_at' => now()])->save();
             $created->roles()->syncWithoutDetaching([$role->id]);
+            AdminAuditEvent::record(auth()->user(), 'admin.created', 'user', $created->id, null, 'admin');
             return $created;
         });
+        $mailSent = true;
+        try { $user->sendEmailVerificationNotification(); }
+        catch (Throwable $e) { report($e); $mailSent = false; }
         Log::notice('admin.created', ['actor' => auth()->id(), 'target' => $user->id]);
         $this->reset('name','email','password','password_confirmation');
-        $this->notice = 'Akun admin baru berhasil dibuat.';
+        $this->notice = $mailSent ? 'Admin dibuat; verifikasi email diproses.' : 'Admin dibuat, tetapi email verifikasi gagal dikirim. Periksa konfigurasi mailer.';
     }
 
     public function selectAdmin(int $id): void
@@ -90,6 +99,7 @@ class AdminAccounts extends Page
             if (config('session.driver') === 'database') {
                 DB::table('sessions')->where('user_id', $admin->id)->delete();
             }
+            AdminAuditEvent::record(auth()->user(), 'admin.password_reset', 'user', $admin->id);
             Log::warning('admin.password_reset', ['actor' => auth()->id(), 'target' => $admin->id]);
         });
         $this->reset('selectedAdminId','resetPassword','resetPasswordConfirmation');
@@ -105,11 +115,14 @@ class AdminAccounts extends Page
             'password' => $this->ownPassword,
             'password_confirmation' => $this->ownPasswordConfirmation,
         ], ['password' => ['required','confirmed',Password::min(12)->mixedCase()->numbers()]])->validate();
-        $user->forceFill(['password' => $data['password']])->save();
-        if (config('session.driver') === 'database') {
-            DB::table('sessions')->where('user_id', $user->id)
-                ->where('id', '<>', session()->getId())->delete();
-        }
+        DB::transaction(function () use ($user, $data): void {
+            $user->forceFill(['password' => $data['password']])->save();
+            if (config('session.driver') === 'database') {
+                DB::table('sessions')->where('user_id', $user->id)
+                    ->where('id', '<>', session()->getId())->delete();
+            }
+            AdminAuditEvent::record($user, 'superadmin.password_changed', 'user', $user->id);
+        });
         Log::notice('superadmin.password_changed', ['actor' => $user->id]);
         $this->reset('currentPassword','ownPassword','ownPasswordConfirmation');
         $this->notice = 'Password akun Anda diperbarui.';

@@ -9,6 +9,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -50,9 +52,21 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
-        Auth::logout();
+        DB::transaction(function () use ($user): void {
+            $user->newQuery()->whereKey($user->id)->lockForUpdate()->firstOrFail();
+            if ($user->instructorProfile()->exists() || $user->hasRole('admin')
+                || DB::table('course_review_events')->where('actor_id', $user->id)->exists()
+                || DB::table('instructor_review_events')->where('actor_id', $user->id)->exists()
+                || DB::table('admin_audit_events')->where('actor_id', $user->id)->exists()) {
+                throw ValidationException::withMessages([
+                    'password' => 'Akun operasional atau pemilik riwayat audit tidak dapat dihapus melalui profil. Hubungi administrator.',
+                ]);
+            }
 
-        $user->delete();
+            $user->delete();
+        });
+
+        Auth::logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

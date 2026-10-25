@@ -34,6 +34,28 @@ class CoursePolicyTest extends TestCase
         $this->assertFalse(Gate::forUser($other)->allows('update', $course));
     }
 
+    public function test_suspended_instructor_cannot_mutate_own_draft(): void
+    {
+        [$owner, $profile] = $this->approvedInstructor();
+        $profile->update(['status' => InstructorStatus::Suspended]);
+        $course = Course::factory()->for($profile, 'instructor')->create();
+
+        foreach (['update', 'submit', 'delete'] as $ability) {
+            $this->assertFalse(Gate::forUser($owner)->allows($ability, $course));
+        }
+    }
+
+    public function test_owner_without_instructor_role_cannot_mutate_own_draft(): void
+    {
+        [$owner, $profile] = $this->approvedInstructor();
+        $owner->roles()->detach($this->role(RoleName::Instructor));
+        $course = Course::factory()->for($profile, 'instructor')->create();
+
+        foreach (['update', 'submit', 'delete'] as $ability) {
+            $this->assertFalse(Gate::forUser($owner)->allows($ability, $course));
+        }
+    }
+
     public function test_instructor_cannot_update_published_course_but_admin_can(): void
     {
         [$owner, $profile] = $this->approvedInstructor();

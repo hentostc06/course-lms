@@ -37,12 +37,14 @@ class CoursePolicy
 
     public function update(User $user, Course $course): bool
     {
-        return $this->owns($user, $course) && $course->status->isEditableByInstructor();
+        return $this->create($user)
+            && $this->owns($user, $course)
+            && $course->status->isEditableByInstructor();
     }
 
     public function submit(User $user, Course $course): bool
     {
-        return $this->create($user) && $this->update($user, $course);
+        return $this->update($user, $course);
     }
 
     public function delete(User $user, Course $course): bool

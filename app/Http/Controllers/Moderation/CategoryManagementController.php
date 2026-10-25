@@ -7,8 +7,6 @@ use App\Domain\Identity\Enums\RoleName;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -26,16 +24,7 @@ class CategoryManagementController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $this->ensureAdmin($request);
-        $data = $request->validate([
-            'name' => ['required', 'string', 'min:3', 'max:120', Rule::unique('categories', 'name')],
-            'description' => ['nullable', 'string', 'max:1000'],
-        ]);
-
-        Category::query()->create([
-            ...$data,
-            'slug' => Str::slug($data['name']).'-'.Str::lower(Str::random(5)),
-            'is_active' => true,
-        ]);
+        app(\App\Domain\Catalog\Actions\SaveCategory::class)->handle($request->user(), $request->only(['name', 'description']));
 
         return back()->with('success', 'Kategori tersedia untuk instruktur.');
     }

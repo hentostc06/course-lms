@@ -333,6 +333,39 @@ function resetFilters(): void {
         </div>
     </section>
 
+    <!-- Homepage category navigation -->
+    <section
+        v-if="isHome && categories.length"
+        id="kategori-populer"
+        class="border-b border-market-border bg-market-surface"
+    >
+        <div class="mx-auto max-w-market px-5 py-10 sm:px-8 lg:px-10">
+            <div class="mb-5 flex items-center justify-between gap-5">
+                <h2 class="font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
+                    Jelajahi kategori
+                </h2>
+                <Link href="/courses" class="text-sm font-bold underline underline-offset-4">
+                    Semua kursus
+                </Link>
+            </div>
+            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                <Link
+                    v-for="(category, index) in categories"
+                    :key="category.slug"
+                    :href="`/courses?category=${encodeURIComponent(category.slug)}`"
+                    class="flex min-h-28 flex-col justify-between border border-market-border bg-market-canvas p-4 transition-colors hover:border-market-ink hover:bg-market-sage"
+                >
+                    <span class="text-xs font-semibold text-market-primary">
+                        {{ String(index + 1).padStart(2, '0') }}
+                    </span>
+                    <span class="font-display text-lg font-bold leading-tight">
+                        {{ category.name }}
+                    </span>
+                </Link>
+            </div>
+        </div>
+    </section>
+
     <!-- KATALOG TETAP DINAMIS -->
     <section
         id="jelajahi-kursus"

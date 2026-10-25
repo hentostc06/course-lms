@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link, router } from '@inertiajs/vue3';
 import { BookOpen, Check, Clock3, Globe2, LockKeyhole } from '@lucide/vue';
 import { formatDuration, formatIdr, formatLessonDuration } from '@/lib/catalog';
 import type { CourseDetail } from '@/types/catalog';
 
 const props = defineProps<{ course: CourseDetail }>();
+
+function enroll(): void {
+    router.post(`/courses/${props.course.slug}/enroll`);
+}
 
 const lessonCount = computed(() =>
     props.course.sections.reduce(
@@ -115,13 +119,23 @@ const lessonType: Record<string, string> = {
                             {{ formatIdr(course.priceIdr) }}
                         </p>
                         <button
+                            v-if="course.priceIdr === 0"
+                            type="button"
+                            class="mt-4 min-h-12 w-full rounded-market-sm bg-market-ink px-4 text-sm font-bold text-white hover:bg-market-primary"
+                            @click="enroll"
+                        >
+                            Ikuti kursus gratis
+                        </button>
+                        <button
+                            v-else
                             type="button"
                             disabled
                             class="mt-4 min-h-12 w-full cursor-not-allowed rounded-market-sm bg-market-muted px-4 text-sm font-semibold text-white opacity-80"
                         >
-                            Pendaftaran belum dibuka
+                            Pembelian belum tersedia
                         </button>
                         <p
+                            v-if="course.priceIdr > 0"
                             class="mt-3 flex gap-2 text-xs leading-5 text-market-muted"
                         >
                             <LockKeyhole

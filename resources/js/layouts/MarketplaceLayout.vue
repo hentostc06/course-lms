@@ -87,14 +87,20 @@ const page = usePage();
 
                     <template v-if="page.props.auth?.user">
                         <Link
+                            href="/my-learning"
+                            class="inline-flex min-h-11 items-center px-2 text-sm font-semibold hover:text-market-primary"
+                        >
+                            Kelas saya
+                        </Link>
+                        <a
                             href="/dashboard"
                             class="inline-flex min-h-11 items-center px-2
                                    text-sm font-semibold hover:text-market-primary"
                         >
                             Dashboard
-                        </Link>
+                        </a>
 
-                        <Link
+                        <a
                             href="/admin"
                             title="Khusus akun dengan role admin"
                             class="hidden min-h-11 items-center px-2
@@ -102,7 +108,7 @@ const page = usePage();
                                    sm:inline-flex"
                         >
                             Admin
-                        </Link>
+                        </a>
                     </template>
 
                     <template v-else>

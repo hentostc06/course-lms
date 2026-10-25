@@ -55,14 +55,16 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser, Fila
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return $panel->getId() === 'admin' && $this->hasRole(RoleName::Admin);
+        return $panel->getId() === 'admin' && $this->hasVerifiedEmail() && $this->hasRole(RoleName::Admin);
     }
 
     public function hasRole(RoleName|string $role): bool
     {
         $name = $role instanceof RoleName ? $role->value : $role;
 
-        return $this->roles()->where('name', $name)->exists();
+        return $this->roles()->whereIn('name', $name === RoleName::Admin->value
+            ? [RoleName::Admin->value, RoleName::SuperAdmin->value]
+            : [$name])->exists();
     }
 
     /**

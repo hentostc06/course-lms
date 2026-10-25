@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Instructor\CourseDetailsRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -73,8 +74,12 @@ class InstructorCourseController extends Controller
     public function update(CourseDetailsRequest $request, Course $course): RedirectResponse
     {
         abort_unless($request->user()->can('update', $course), 403);
-        // Status, slug, ownership and published_at are never accepted from browser input.
-        $course->update($request->validated());
+        DB::transaction(function () use ($request, $course): void {
+            $locked = Course::query()->lockForUpdate()->findOrFail($course->id);
+            abort_unless($request->user()->can('update', $locked), 403);
+            // Status, slug, ownership and published_at are never accepted from browser input.
+            $locked->update($request->validated());
+        });
 
         return to_route('instructor.courses.edit', $course)->with('success', 'Draf diperbarui.');
     }

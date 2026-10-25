@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class CourseSubmissionController extends Controller
 {
@@ -15,17 +16,20 @@ class CourseSubmissionController extends Controller
     {
         abort_unless($request->user()->can('submit', $course), 403);
 
-        if (! $course->sections()->whereHas('lessons')->exists()) {
-            return back()->withErrors(['curriculum' => 'Tambahkan minimal satu materi sebelum mengajukan review.']);
-        }
-
         DB::transaction(function () use ($course, $request): void {
+            $course = Course::query()->lockForUpdate()->findOrFail($course->id);
+            abort_unless($request->user()->can('submit', $course), 403);
+            if (! $course->sections()->whereHas('lessons')->exists()) {
+                throw ValidationException::withMessages(['curriculum' => 'Tambahkan minimal satu materi sebelum mengajukan review.']);
+            }
             $previous = $course->status->value;
-            $course->update([
+            $course->forceFill([
                 'status' => CourseStatus::PendingReview,
                 'published_at' => null,
                 'review_feedback' => null,
-            ]);
+                'reviewed_at' => null,
+                'reviewed_by' => null,
+            ])->save();
             DB::table('course_review_events')->insert([
                 'course_id' => $course->id,
                 'actor_id' => $request->user()->id,

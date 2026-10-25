@@ -1,9 +1,14 @@
 <x-filament-widgets::widget>
     <x-filament::section heading="Operasional marketplace" description="Kelola konten dan kualitas kelas dari satu tempat.">
-        <div class="grid gap-4 md:grid-cols-3">
+        <div class="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             <a href="{{ \App\Filament\Admin\Pages\ContentOperations::getUrl() }}" class="block rounded-lg border border-gray-300 p-5 hover:border-orange-600 dark:border-gray-700">
                 <p class="text-base font-semibold">Moderasi & kategori</p><p class="mt-2 text-sm text-gray-500">Review instruktur, review kursus, serta mengelola kategori.</p>
             </a>
+            <a href="{{ \App\Filament\Admin\Pages\Instructors::getUrl() }}" class="block rounded-lg border p-4"><strong>Instruktur</strong></a>
+            <a href="{{ \App\Filament\Admin\Pages\Categories::getUrl() }}" class="block rounded-lg border p-4"><strong>Kategori</strong></a>
+            <a href="{{ \App\Filament\Admin\Pages\UsersDirectory::getUrl() }}" class="block rounded-lg border p-4"><strong>Pengguna</strong></a>
+            <a href="{{ \App\Filament\Admin\Pages\AuditTrail::getUrl() }}" class="block rounded-lg border p-4"><strong>Audit admin</strong></a>
+            <a href="{{ \App\Filament\Admin\Pages\FinanceReadiness::getUrl() }}" class="block rounded-lg border p-4"><strong>Keuangan · NOT_LIVE</strong></a>
             <a href="{{ url('/courses') }}" class="block rounded-lg border border-gray-300 p-5 hover:border-orange-600 dark:border-gray-700">
                 <p class="text-base font-semibold">Lihat katalog publik</p><p class="mt-2 text-sm text-gray-500">Pastikan hasil publikasi tampil sesuai kurikulum.</p>
             </a>

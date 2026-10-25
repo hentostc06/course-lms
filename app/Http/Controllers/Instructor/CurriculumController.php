@@ -8,6 +8,7 @@ use App\Domain\Catalog\Models\CourseSection;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -44,10 +45,14 @@ class CurriculumController extends Controller
     {
         $this->authorizeCourse($request, $course);
         $data = $request->validate(['title' => ['required', 'string', 'min:3', 'max:180']]);
-        $course->sections()->create([
-            ...$data,
-            'sort_order' => (int) $course->sections()->max('sort_order') + 1,
-        ]);
+        DB::transaction(function () use ($course, $request, $data): void {
+            $course = Course::query()->lockForUpdate()->findOrFail($course->id);
+            $this->authorizeCourse($request, $course);
+            $course->sections()->create([
+                ...$data,
+                'sort_order' => (int) $course->sections()->max('sort_order') + 1,
+            ]);
+        });
 
         return back()->with('success', 'Bagian kurikulum ditambahkan.');
     }
@@ -64,17 +69,21 @@ class CurriculumController extends Controller
             'duration_seconds' => ['required', 'integer', 'min:0', 'max:86400'],
             'is_preview' => ['required', 'boolean'],
         ]);
-        $section->lessons()->create([
-            ...$data,
-            'sort_order' => (int) $section->lessons()->max('sort_order') + 1,
-        ]);
+        DB::transaction(function () use ($course, $section, $request, $data): void {
+            $course = Course::query()->lockForUpdate()->findOrFail($course->id);
+            $this->authorizeCourse($request, $course);
+            $section->lessons()->create([
+                ...$data,
+                'sort_order' => (int) $section->lessons()->max('sort_order') + 1,
+            ]);
 
-        // Derived duration is not trusted from client input.
-        $course->update(['total_duration_minutes' => (int) ceil(
-            $course->sections()->with('lessons')->get()->sum(
-                fn (CourseSection $item) => $item->lessons->sum('duration_seconds')
-            ) / 60,
-        )]);
+            // Derived duration is not trusted from client input.
+            $course->update(['total_duration_minutes' => (int) ceil(
+                $course->sections()->with('lessons')->get()->sum(
+                    fn (CourseSection $item) => $item->lessons->sum('duration_seconds')
+                ) / 60,
+            )]);
+        });
 
         return back()->with('success', 'Materi ditambahkan.');
     }

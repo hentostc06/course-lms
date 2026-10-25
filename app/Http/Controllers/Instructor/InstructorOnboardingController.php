@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -30,22 +31,29 @@ class InstructorOnboardingController extends Controller
         ]);
 
         $user = $request->user();
-        $existing = $user->instructorProfile;
+        $created = DB::transaction(function () use ($user, $data): bool {
+            $user->newQuery()->whereKey($user->id)->lockForUpdate()->firstOrFail();
+            if ($user->instructorProfile()->exists()) {
+                return false;
+            }
 
-        if ($existing) {
+            InstructorProfile::query()->create([
+                'user_id' => $user->id,
+                'slug' => Str::slug($user->name).'-'.Str::lower(Str::random(10)),
+                'headline' => $data['headline'],
+                'bio' => $data['bio'],
+                'status' => InstructorStatus::Pending,
+            ]);
+    
+            $instructorRole = Role::query()->where('name', RoleName::Instructor)->firstOrFail();
+            $user->roles()->syncWithoutDetaching([$instructorRole->id]);
+
+            return true;
+        });
+
+        if (! $created) {
             return to_route('instructor.onboarding')->with('error', 'Pendaftaran instruktur sudah tercatat.');
         }
-
-        InstructorProfile::query()->create([
-            'user_id' => $user->id,
-            'slug' => Str::slug($user->name).'-'.Str::lower(Str::random(10)),
-            'headline' => $data['headline'],
-            'bio' => $data['bio'],
-            'status' => InstructorStatus::Pending,
-        ]);
-
-        $instructorRole = Role::query()->where('name', RoleName::Instructor)->firstOrFail();
-        $user->roles()->syncWithoutDetaching([$instructorRole->id]);
 
         return to_route('instructor.onboarding')->with('success', 'Pengajuan instruktur diterima. Menunggu verifikasi admin.');
     }
