@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [CourseCatalogController::class, 'index'])->name('home');
 Route::get('/courses', [CourseCatalogController::class, 'index'])->name('courses.index');
 Route::get('/courses/{slug}', [CourseCatalogController::class, 'show'])->name('courses.show');
+Route::get('/courses/{slug}/preview/{lesson}', [CourseCatalogController::class, 'preview'])->name('courses.preview');
+Route::get('/courses/{slug}/join', [CourseCatalogController::class, 'join'])->name('courses.join');
 
 Route::middleware('guest')->group(function () {
     Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->name('auth.google.redirect');
@@ -29,6 +31,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('courses/{course}/curriculum', [CurriculumController::class, 'show'])->name('courses.curriculum');
         Route::post('courses/{course}/curriculum/sections', [CurriculumController::class, 'storeSection'])->name('sections.store');
         Route::post('courses/{course}/curriculum/sections/{section}/lessons', [CurriculumController::class, 'storeLesson'])->name('lessons.store');
+        Route::patch('courses/{course}/curriculum/sections/{section}/lessons/{lesson}', [CurriculumController::class, 'updateLesson'])->name('lessons.update');
+        Route::delete('courses/{course}/curriculum/sections/{section}/lessons/{lesson}', [CurriculumController::class, 'deleteLesson'])->name('lessons.destroy');
         Route::post('courses/{course}/submit', CourseSubmissionController::class)->name('courses.submit');
     });
 

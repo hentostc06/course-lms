@@ -121,14 +121,14 @@
 
 :root {
     --market-ink: #171716;
-    --market-canvas: #F4F1E9;
-    --market-surface: #FFFEFA;
-    --market-primary: #D94A2F;
-    --market-primary-hover: #B83725;
-    --market-sage: #EFE0D6;
-    --market-accent: #D94A2F;
-    --market-muted: #655F57;
-    --market-border: #CBC4B9;
+    --market-canvas: #f4f1e9;
+    --market-surface: #fffefa;
+    --market-primary: #d94a2f;
+    --market-primary-hover: #b83725;
+    --market-sage: #efe0d6;
+    --market-accent: #d94a2f;
+    --market-muted: #655f57;
+    --market-border: #cbc4b9;
     --background: hsl(0 0% 100%);
     --foreground: hsl(0 0% 3.9%);
     --card: hsl(0 0% 100%);
@@ -161,7 +161,7 @@
     --sidebar-accent: hsl(0 0% 94%);
     --sidebar-accent-foreground: hsl(0 0% 30%);
     --sidebar-border: hsl(0 0% 91%);
-    --sidebar-ring: #D94A2F;
+    --sidebar-ring: #d94a2f;
     --sidebar: hsl(0 0% 98%);
 }
 
@@ -197,7 +197,7 @@
     --sidebar-accent: hsl(0 0% 15.9%);
     --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
     --sidebar-border: hsl(0 0% 15.9%);
-    --sidebar-ring: #D94A2F;
+    --sidebar-ring: #d94a2f;
     --sidebar: hsl(240 5.9% 10%);
 }
 

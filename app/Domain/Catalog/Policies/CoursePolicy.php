@@ -12,7 +12,9 @@ class CoursePolicy
 {
     public function before(User $user, string $ability): ?bool
     {
-        return $user->hasRole(RoleName::Admin) ? true : null;
+        // Administrator changes are authorized by the dedicated, audited admin
+        // actions. Do not give admin users write access via instructor routes.
+        return $ability === 'view' && $user->hasRole(RoleName::Admin) ? true : null;
     }
 
     public function view(?User $user, Course $course): bool

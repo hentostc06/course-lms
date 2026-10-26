@@ -83,11 +83,11 @@ defineProps<{
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 
 .auth-page {
-    --paper: #F4F1E9;
+    --paper: #f4f1e9;
     --ink: #171716;
-    --muted: #655F57;
-    --line: #C9C4BA;
-    --red: #D94A2F;
+    --muted: #655f57;
+    --line: #c9c4ba;
+    --red: #d94a2f;
 
     display: grid;
     grid-template-columns: minmax(0, 52%) minmax(0, 48%);
@@ -123,8 +123,11 @@ defineProps<{
     gap: 11px;
     color: var(--ink);
     text-decoration: none;
-    font: 800 19px/1 'Archivo', Arial, sans-serif;
-    letter-spacing: -.045em;
+    font:
+        800 19px/1 'Archivo',
+        Arial,
+        sans-serif;
+    letter-spacing: -0.045em;
 }
 
 .auth-brand-square {
@@ -135,7 +138,7 @@ defineProps<{
     display: grid;
     place-items: center;
     font-size: 19px;
-    letter-spacing: -.08em;
+    letter-spacing: -0.08em;
 }
 
 .auth-brand-square span,
@@ -153,8 +156,11 @@ defineProps<{
 .editorial-footer,
 .auth-overline,
 .editorial-label {
-    font: 600 10px/1.5 'IBM Plex Sans', Arial, sans-serif;
-    letter-spacing: .115em;
+    font:
+        600 10px/1.5 'IBM Plex Sans',
+        Arial,
+        sans-serif;
+    letter-spacing: 0.115em;
 }
 
 .auth-edition {
@@ -189,9 +195,11 @@ defineProps<{
 
 .auth-intro h1 {
     margin: 0;
-    font: 700 clamp(31px, 3.25vw, 45px)/1.14
-        'Archivo', Arial, sans-serif;
-    letter-spacing: -.055em;
+    font:
+        700 clamp(31px, 3.25vw, 45px)/1.14 'Archivo',
+        Arial,
+        sans-serif;
+    letter-spacing: -0.055em;
 }
 
 .auth-intro p {
@@ -229,7 +237,7 @@ defineProps<{
 
 .editorial-head,
 .editorial-footer {
-    color: #B8B2A7;
+    color: #b8b2a7;
 }
 
 .editorial-head {
@@ -243,7 +251,7 @@ defineProps<{
 }
 
 .editorial-label {
-    color: #D7D1C5;
+    color: #d7d1c5;
     display: flex;
     align-items: center;
     gap: 11px;
@@ -258,9 +266,11 @@ defineProps<{
 
 .editorial-body h2 {
     margin: 0;
-    font: 800 clamp(42px, 4.55vw, 83px)/.99
-        'Archivo', Arial, sans-serif;
-    letter-spacing: -.075em;
+    font:
+        800 clamp(42px, 4.55vw, 83px)/0.99 'Archivo',
+        Arial,
+        sans-serif;
+    letter-spacing: -0.075em;
 }
 
 .editorial-body h2 span {
@@ -271,7 +281,7 @@ defineProps<{
     margin: 35px 0 0;
     padding-left: 18px;
     border-left: 2px solid var(--red);
-    color: #CBC6BC;
+    color: #cbc6bc;
     font-size: clamp(14px, 1.2vw, 17px);
     line-height: 1.7;
 }

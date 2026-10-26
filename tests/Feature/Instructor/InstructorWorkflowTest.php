@@ -98,6 +98,7 @@ class InstructorWorkflowTest extends TestCase
 
         $section->lessons()->create([
             'title' => 'Materi awal', 'type' => 'article',
+            'content' => 'Panduan materi audit yang lengkap dan dapat dipelajari.',
             'duration_seconds' => 120, 'is_preview' => false,
             'sort_order' => 1,
         ]);
@@ -163,6 +164,64 @@ class InstructorWorkflowTest extends TestCase
 
         $this->assertFalse($instructor->canAccessPanel(\Filament\Facades\Filament::getPanel('admin')));
         $this->assertTrue($admin->canAccessPanel(\Filament\Facades\Filament::getPanel('admin')));
+    }
+
+    public function test_placeholder_video_cannot_be_submitted_or_approved(): void
+    {
+        [$owner, $profile] = $this->instructor();
+        $course = Course::factory()->for($profile, 'instructor')->create();
+        $section = CourseSection::factory()->for($course)->create();
+        $section->lessons()->create([
+            'title' => 'Video placeholder', 'type' => 'video',
+            'content' => null, 'duration_seconds' => 600,
+            'sort_order' => 1, 'is_preview' => false,
+        ]);
+
+        $this->actingAs($owner)->post(route('instructor.courses.submit', $course))
+            ->assertSessionHasErrors('curriculum');
+        $this->assertSame(CourseStatus::Draft, $course->fresh()->status);
+
+        $this->actingAs($owner)->post(route('instructor.lessons.store', [$course, $section]), [
+            'title' => 'Another placeholder', 'type' => 'video',
+            'duration_seconds' => 600, 'is_preview' => false,
+        ])->assertSessionHasErrors('type');
+    }
+
+    public function test_instructor_can_correct_and_remove_draft_article(): void
+    {
+        [$owner, $profile] = $this->instructor();
+        $course = Course::factory()->for($profile, 'instructor')->create();
+        $section = CourseSection::factory()->for($course)->create();
+        $lesson = $section->lessons()->create([
+            'title' => 'Artikel perlu revisi', 'type' => 'article',
+            'content' => 'Artikel awal', 'duration_seconds' => 600,
+            'sort_order' => 1, 'is_preview' => false,
+        ]);
+        $this->actingAs($owner)->patch(route('instructor.lessons.update', [$course, $section, $lesson]), [
+            'title' => 'Artikel berhasil diperbaiki', 'type' => 'article',
+            'content' => 'Artikel lengkap hasil revisi.',
+            'duration_seconds' => 300, 'is_preview' => true,
+        ])->assertRedirect();
+        $this->assertSame('Artikel lengkap hasil revisi.', $lesson->fresh()->content);
+        $this->assertSame(5, $course->fresh()->total_duration_minutes);
+
+        $this->actingAs($owner)->delete(route('instructor.lessons.destroy', [$course, $section, $lesson]))
+            ->assertRedirect();
+        $this->assertDatabaseMissing('lessons', ['id' => $lesson->id]);
+        $this->assertSame(0, $course->fresh()->total_duration_minutes);
+    }
+
+    public function test_admin_cannot_bypass_instructor_edit_permission(): void
+    {
+        [$owner, $profile] = $this->instructor();
+        $course = Course::factory()->for($profile, 'instructor')->create();
+        $admin = User::factory()->create();
+        $admin->roles()->attach($this->role(RoleName::Admin));
+
+        $this->actingAs($admin)->get(route('instructor.courses.edit', $course))
+            ->assertForbidden();
+        $this->actingAs($admin)->post(route('instructor.courses.submit', $course))
+            ->assertForbidden();
     }
 
     private function validCourse(int $categoryId): array

@@ -1,298 +1,298 @@
 {
-  "users": [
-    {
-      "name": "[DEMO] Superadmin",
-      "email": "demo.superadmin@example.test",
-      "role": "super_admin"
-    },
-    {
-      "name": "[DEMO] Admin Operasional",
-      "email": "demo.admin.ops@example.test",
-      "role": "admin"
-    },
-    {
-      "name": "[DEMO] Admin Konten",
-      "email": "demo.admin.content@example.test",
-      "role": "admin"
-    },
-    {
-      "name": "[DEMO] Andi Pratama",
-      "email": "demo.instructor.andi@example.test",
-      "role": "instructor"
-    },
-    {
-      "name": "[DEMO] Rani Maheswari",
-      "email": "demo.instructor.rani@example.test",
-      "role": "instructor"
-    },
-    {
-      "name": "[DEMO] Dimas Wibowo",
-      "email": "demo.instructor.dimas@example.test",
-      "role": "instructor"
-    },
-    {
-      "name": "[DEMO] Nadia Kusuma",
-      "email": "demo.instructor.nadia@example.test",
-      "role": "instructor"
-    },
-    {
-      "name": "[DEMO] Yoga Saputra",
-      "email": "demo.instructor.yoga@example.test",
-      "role": "instructor"
-    },
-    {
-      "name": "[DEMO] Siswa Pertama",
-      "email": "demo.student.one@example.test",
-      "role": "student"
-    },
-    {
-      "name": "[DEMO] Siswa Kedua",
-      "email": "demo.student.two@example.test",
-      "role": "student"
-    },
-    {
-      "name": "[DEMO] Siswa Ketiga",
-      "email": "demo.student.three@example.test",
-      "role": "student"
-    }
-  ],
-  "categories": [
-    {
-      "name": "Pemrograman Web",
-      "slug": "demo-pemrograman-web",
-      "description": "Frontend, backend, dan pengembangan aplikasi.",
-      "sort_order": 1
-    },
-    {
-      "name": "Desain & Kreativitas",
-      "slug": "demo-desain-kreativitas",
-      "description": "Pengalaman pengguna dan produksi antarmuka.",
-      "sort_order": 2
-    },
-    {
-      "name": "Data & Analitik",
-      "slug": "demo-data-analitik",
-      "description": "Analisis data, query, dan visualisasi.",
-      "sort_order": 3
-    },
-    {
-      "name": "Bisnis & Karier",
-      "slug": "demo-bisnis-karier",
-      "description": "Manajemen, pemasaran, dan komunikasi.",
-      "sort_order": 4
-    },
-    {
-      "name": "Infrastruktur & Keamanan",
-      "slug": "demo-infrastruktur-keamanan",
-      "description": "Server, jaringan, dan keamanan sistem.",
-      "sort_order": 5
-    }
-  ],
-  "instructors": [
-    {
-      "email": "demo.instructor.andi@example.test",
-      "slug": "demo-andi-pratama",
-      "headline": "Web engineer dan pengajar backend",
-      "bio": "Fokus pada Laravel, database, dan pengembangan aplikasi.",
-      "status": "approved"
-    },
-    {
-      "email": "demo.instructor.rani@example.test",
-      "slug": "demo-rani-maheswari",
-      "headline": "UI/UX designer dan product mentor",
-      "bio": "Mengajar riset pengguna dan design system.",
-      "status": "approved"
-    },
-    {
-      "email": "demo.instructor.dimas@example.test",
-      "slug": "demo-dimas-wibowo",
-      "headline": "Data analyst dan praktisi pelaporan",
-      "bio": "Membahas spreadsheet, SQL, dan Python.",
-      "status": "approved"
-    },
-    {
-      "email": "demo.instructor.nadia@example.test",
-      "slug": "demo-nadia-kusuma",
-      "headline": "Konsultan pengembangan bisnis",
-      "bio": "Berpengalaman dalam manajemen proyek.",
-      "status": "approved"
-    },
-    {
-      "email": "demo.instructor.yoga@example.test",
-      "slug": "demo-yoga-saputra",
-      "headline": "Instruktur infrastruktur",
-      "bio": "Profil khusus pengujian persetujuan instruktur.",
-      "status": "pending"
-    }
-  ],
-  "courses": [
-    {
-      "title": "Laravel 13: Membangun Web App Modern",
-      "slug": "demo-laravel-13-membangun-web-app-modern",
-      "category_slug": "demo-pemrograman-web",
-      "instructor_email": "demo.instructor.andi@example.test",
-      "level": "beginner",
-      "price_idr": 299000,
-      "status": "published",
-      "summary": "Pelajari routing, model, validasi, autentikasi, dan arsitektur aplikasi Laravel.",
-      "thumbnail_url": "/images/demo-courses/demo-laravel-13-membangun-web-app-modern.svg",
-      "days_old": 24
-    },
-    {
-      "title": "Vue 3 + TypeScript untuk Frontend",
-      "slug": "demo-vue-3-typescript-untuk-frontend",
-      "category_slug": "demo-pemrograman-web",
-      "instructor_email": "demo.instructor.andi@example.test",
-      "level": "intermediate",
-      "price_idr": 249000,
-      "status": "published",
-      "summary": "Bangun antarmuka interaktif dengan Composition API dan TypeScript.",
-      "thumbnail_url": "/images/demo-courses/demo-vue-3-typescript-untuk-frontend.svg",
-      "days_old": 23
-    },
-    {
-      "title": "Figma & Dasar UI/UX untuk Produk Digital",
-      "slug": "demo-figma-dasar-ui-ux-untuk-produk-digital",
-      "category_slug": "demo-desain-kreativitas",
-      "instructor_email": "demo.instructor.rani@example.test",
-      "level": "beginner",
-      "price_idr": 199000,
-      "status": "published",
-      "summary": "Dari kebutuhan pengguna, wireframe, hingga prototipe.",
-      "thumbnail_url": "/images/demo-courses/demo-figma-dasar-ui-ux-untuk-produk-digital.svg",
-      "days_old": 22
-    },
-    {
-      "title": "Design System Praktis untuk Tim Produk",
-      "slug": "demo-design-system-praktis-untuk-tim-produk",
-      "category_slug": "demo-desain-kreativitas",
-      "instructor_email": "demo.instructor.rani@example.test",
-      "level": "intermediate",
-      "price_idr": 329000,
-      "status": "published",
-      "summary": "Kelola komponen, token desain, dan dokumentasi.",
-      "thumbnail_url": "/images/demo-courses/demo-design-system-praktis-untuk-tim-produk.svg",
-      "days_old": 21
-    },
-    {
-      "title": "Excel untuk Analisis Data Kantor",
-      "slug": "demo-excel-untuk-analisis-data-kantor",
-      "category_slug": "demo-data-analitik",
-      "instructor_email": "demo.instructor.dimas@example.test",
-      "level": "beginner",
-      "price_idr": 149000,
-      "status": "published",
-      "summary": "Rumus, pivot, grafik, dan pelaporan berbasis data.",
-      "thumbnail_url": "/images/demo-courses/demo-excel-untuk-analisis-data-kantor.svg",
-      "days_old": 20
-    },
-    {
-      "title": "SQL & PostgreSQL dari Dasar",
-      "slug": "demo-sql-postgresql-dari-dasar",
-      "category_slug": "demo-data-analitik",
-      "instructor_email": "demo.instructor.dimas@example.test",
-      "level": "beginner",
-      "price_idr": 219000,
-      "status": "published",
-      "summary": "Tulis query, join, agregasi, dan desain database.",
-      "thumbnail_url": "/images/demo-courses/demo-sql-postgresql-dari-dasar.svg",
-      "days_old": 19
-    },
-    {
-      "title": "Python untuk Data Analysis",
-      "slug": "demo-python-untuk-data-analysis",
-      "category_slug": "demo-data-analitik",
-      "instructor_email": "demo.instructor.dimas@example.test",
-      "level": "intermediate",
-      "price_idr": 349000,
-      "status": "published",
-      "summary": "Mulai dari pandas hingga eksplorasi dataset.",
-      "thumbnail_url": "/images/demo-courses/demo-python-untuk-data-analysis.svg",
-      "days_old": 18
-    },
-    {
-      "title": "Project Management dengan Agile",
-      "slug": "demo-project-management-dengan-agile",
-      "category_slug": "demo-bisnis-karier",
-      "instructor_email": "demo.instructor.nadia@example.test",
-      "level": "all_levels",
-      "price_idr": 179000,
-      "status": "published",
-      "summary": "Susun backlog, sprint, dan prioritas pekerjaan.",
-      "thumbnail_url": "/images/demo-courses/demo-project-management-dengan-agile.svg",
-      "days_old": 17
-    },
-    {
-      "title": "Digital Marketing untuk UMKM",
-      "slug": "demo-digital-marketing-untuk-umkm",
-      "category_slug": "demo-bisnis-karier",
-      "instructor_email": "demo.instructor.nadia@example.test",
-      "level": "beginner",
-      "price_idr": 99000,
-      "status": "published",
-      "summary": "Rancang strategi konten dan pengukuran kampanye.",
-      "thumbnail_url": "/images/demo-courses/demo-digital-marketing-untuk-umkm.svg",
-      "days_old": 16
-    },
-    {
-      "title": "Presentasi dan Komunikasi Profesional",
-      "slug": "demo-presentasi-dan-komunikasi-profesional",
-      "category_slug": "demo-bisnis-karier",
-      "instructor_email": "demo.instructor.nadia@example.test",
-      "level": "all_levels",
-      "price_idr": 0,
-      "status": "published",
-      "summary": "Susun presentasi dan komunikasikan ide secara efektif.",
-      "thumbnail_url": "/images/demo-courses/demo-presentasi-dan-komunikasi-profesional.svg",
-      "days_old": 15
-    },
-    {
-      "title": "Linux Server untuk Administrator",
-      "slug": "demo-linux-server-untuk-administrator",
-      "category_slug": "demo-infrastruktur-keamanan",
-      "instructor_email": "demo.instructor.andi@example.test",
-      "level": "intermediate",
-      "price_idr": 279000,
-      "status": "published",
-      "summary": "Kelola layanan Linux, permission, dan monitoring.",
-      "thumbnail_url": "/images/demo-courses/demo-linux-server-untuk-administrator.svg",
-      "days_old": 14
-    },
-    {
-      "title": "MikroTik: Routing, Firewall, dan VLAN",
-      "slug": "demo-mikrotik-routing-firewall-dan-vlan",
-      "category_slug": "demo-infrastruktur-keamanan",
-      "instructor_email": "demo.instructor.andi@example.test",
-      "level": "intermediate",
-      "price_idr": 299000,
-      "status": "published",
-      "summary": "Bangun segmentasi jaringan dan troubleshooting.",
-      "thumbnail_url": "/images/demo-courses/demo-mikrotik-routing-firewall-dan-vlan.svg",
-      "days_old": 13
-    },
-    {
-      "title": "Docker & Deployment Aplikasi",
-      "slug": "demo-docker-deployment-aplikasi",
-      "category_slug": "demo-infrastruktur-keamanan",
-      "instructor_email": "demo.instructor.andi@example.test",
-      "level": "intermediate",
-      "price_idr": 259000,
-      "status": "pending_review",
-      "summary": "Pelajari Docker Compose, image, dan deployment aman.",
-      "thumbnail_url": "/images/demo-courses/demo-docker-deployment-aplikasi.svg",
-      "days_old": 12
-    },
-    {
-      "title": "Audit Keamanan Aplikasi Web",
-      "slug": "demo-audit-keamanan-aplikasi-web",
-      "category_slug": "demo-infrastruktur-keamanan",
-      "instructor_email": "demo.instructor.andi@example.test",
-      "level": "advanced",
-      "price_idr": 399000,
-      "status": "draft",
-      "summary": "Kenali risiko autentikasi, otorisasi, dan input.",
-      "thumbnail_url": "/images/demo-courses/demo-audit-keamanan-aplikasi-web.svg",
-      "days_old": 11
-    }
-  ]
+    "users": [
+        {
+            "name": "[DEMO] Superadmin",
+            "email": "demo.superadmin@example.test",
+            "role": "super_admin"
+        },
+        {
+            "name": "[DEMO] Admin Operasional",
+            "email": "demo.admin.ops@example.test",
+            "role": "admin"
+        },
+        {
+            "name": "[DEMO] Admin Konten",
+            "email": "demo.admin.content@example.test",
+            "role": "admin"
+        },
+        {
+            "name": "[DEMO] Andi Pratama",
+            "email": "demo.instructor.andi@example.test",
+            "role": "instructor"
+        },
+        {
+            "name": "[DEMO] Rani Maheswari",
+            "email": "demo.instructor.rani@example.test",
+            "role": "instructor"
+        },
+        {
+            "name": "[DEMO] Dimas Wibowo",
+            "email": "demo.instructor.dimas@example.test",
+            "role": "instructor"
+        },
+        {
+            "name": "[DEMO] Nadia Kusuma",
+            "email": "demo.instructor.nadia@example.test",
+            "role": "instructor"
+        },
+        {
+            "name": "[DEMO] Yoga Saputra",
+            "email": "demo.instructor.yoga@example.test",
+            "role": "instructor"
+        },
+        {
+            "name": "[DEMO] Siswa Pertama",
+            "email": "demo.student.one@example.test",
+            "role": "student"
+        },
+        {
+            "name": "[DEMO] Siswa Kedua",
+            "email": "demo.student.two@example.test",
+            "role": "student"
+        },
+        {
+            "name": "[DEMO] Siswa Ketiga",
+            "email": "demo.student.three@example.test",
+            "role": "student"
+        }
+    ],
+    "categories": [
+        {
+            "name": "Pemrograman Web",
+            "slug": "demo-pemrograman-web",
+            "description": "Frontend, backend, dan pengembangan aplikasi.",
+            "sort_order": 1
+        },
+        {
+            "name": "Desain & Kreativitas",
+            "slug": "demo-desain-kreativitas",
+            "description": "Pengalaman pengguna dan produksi antarmuka.",
+            "sort_order": 2
+        },
+        {
+            "name": "Data & Analitik",
+            "slug": "demo-data-analitik",
+            "description": "Analisis data, query, dan visualisasi.",
+            "sort_order": 3
+        },
+        {
+            "name": "Bisnis & Karier",
+            "slug": "demo-bisnis-karier",
+            "description": "Manajemen, pemasaran, dan komunikasi.",
+            "sort_order": 4
+        },
+        {
+            "name": "Infrastruktur & Keamanan",
+            "slug": "demo-infrastruktur-keamanan",
+            "description": "Server, jaringan, dan keamanan sistem.",
+            "sort_order": 5
+        }
+    ],
+    "instructors": [
+        {
+            "email": "demo.instructor.andi@example.test",
+            "slug": "demo-andi-pratama",
+            "headline": "Web engineer dan pengajar backend",
+            "bio": "Fokus pada Laravel, database, dan pengembangan aplikasi.",
+            "status": "approved"
+        },
+        {
+            "email": "demo.instructor.rani@example.test",
+            "slug": "demo-rani-maheswari",
+            "headline": "UI/UX designer dan product mentor",
+            "bio": "Mengajar riset pengguna dan design system.",
+            "status": "approved"
+        },
+        {
+            "email": "demo.instructor.dimas@example.test",
+            "slug": "demo-dimas-wibowo",
+            "headline": "Data analyst dan praktisi pelaporan",
+            "bio": "Membahas spreadsheet, SQL, dan Python.",
+            "status": "approved"
+        },
+        {
+            "email": "demo.instructor.nadia@example.test",
+            "slug": "demo-nadia-kusuma",
+            "headline": "Konsultan pengembangan bisnis",
+            "bio": "Berpengalaman dalam manajemen proyek.",
+            "status": "approved"
+        },
+        {
+            "email": "demo.instructor.yoga@example.test",
+            "slug": "demo-yoga-saputra",
+            "headline": "Instruktur infrastruktur",
+            "bio": "Profil khusus pengujian persetujuan instruktur.",
+            "status": "pending"
+        }
+    ],
+    "courses": [
+        {
+            "title": "Laravel 13: Membangun Web App Modern",
+            "slug": "demo-laravel-13-membangun-web-app-modern",
+            "category_slug": "demo-pemrograman-web",
+            "instructor_email": "demo.instructor.andi@example.test",
+            "level": "beginner",
+            "price_idr": 299000,
+            "status": "published",
+            "summary": "Pelajari routing, model, validasi, autentikasi, dan arsitektur aplikasi Laravel.",
+            "thumbnail_url": "/images/demo-courses/demo-laravel-13-membangun-web-app-modern.svg",
+            "days_old": 24
+        },
+        {
+            "title": "Vue 3 + TypeScript untuk Frontend",
+            "slug": "demo-vue-3-typescript-untuk-frontend",
+            "category_slug": "demo-pemrograman-web",
+            "instructor_email": "demo.instructor.andi@example.test",
+            "level": "intermediate",
+            "price_idr": 249000,
+            "status": "published",
+            "summary": "Bangun antarmuka interaktif dengan Composition API dan TypeScript.",
+            "thumbnail_url": "/images/demo-courses/demo-vue-3-typescript-untuk-frontend.svg",
+            "days_old": 23
+        },
+        {
+            "title": "Figma & Dasar UI/UX untuk Produk Digital",
+            "slug": "demo-figma-dasar-ui-ux-untuk-produk-digital",
+            "category_slug": "demo-desain-kreativitas",
+            "instructor_email": "demo.instructor.rani@example.test",
+            "level": "beginner",
+            "price_idr": 199000,
+            "status": "published",
+            "summary": "Dari kebutuhan pengguna, wireframe, hingga prototipe.",
+            "thumbnail_url": "/images/demo-courses/demo-figma-dasar-ui-ux-untuk-produk-digital.svg",
+            "days_old": 22
+        },
+        {
+            "title": "Design System Praktis untuk Tim Produk",
+            "slug": "demo-design-system-praktis-untuk-tim-produk",
+            "category_slug": "demo-desain-kreativitas",
+            "instructor_email": "demo.instructor.rani@example.test",
+            "level": "intermediate",
+            "price_idr": 329000,
+            "status": "published",
+            "summary": "Kelola komponen, token desain, dan dokumentasi.",
+            "thumbnail_url": "/images/demo-courses/demo-design-system-praktis-untuk-tim-produk.svg",
+            "days_old": 21
+        },
+        {
+            "title": "Excel untuk Analisis Data Kantor",
+            "slug": "demo-excel-untuk-analisis-data-kantor",
+            "category_slug": "demo-data-analitik",
+            "instructor_email": "demo.instructor.dimas@example.test",
+            "level": "beginner",
+            "price_idr": 149000,
+            "status": "published",
+            "summary": "Rumus, pivot, grafik, dan pelaporan berbasis data.",
+            "thumbnail_url": "/images/demo-courses/demo-excel-untuk-analisis-data-kantor.svg",
+            "days_old": 20
+        },
+        {
+            "title": "SQL & PostgreSQL dari Dasar",
+            "slug": "demo-sql-postgresql-dari-dasar",
+            "category_slug": "demo-data-analitik",
+            "instructor_email": "demo.instructor.dimas@example.test",
+            "level": "beginner",
+            "price_idr": 219000,
+            "status": "published",
+            "summary": "Tulis query, join, agregasi, dan desain database.",
+            "thumbnail_url": "/images/demo-courses/demo-sql-postgresql-dari-dasar.svg",
+            "days_old": 19
+        },
+        {
+            "title": "Python untuk Data Analysis",
+            "slug": "demo-python-untuk-data-analysis",
+            "category_slug": "demo-data-analitik",
+            "instructor_email": "demo.instructor.dimas@example.test",
+            "level": "intermediate",
+            "price_idr": 349000,
+            "status": "published",
+            "summary": "Mulai dari pandas hingga eksplorasi dataset.",
+            "thumbnail_url": "/images/demo-courses/demo-python-untuk-data-analysis.svg",
+            "days_old": 18
+        },
+        {
+            "title": "Project Management dengan Agile",
+            "slug": "demo-project-management-dengan-agile",
+            "category_slug": "demo-bisnis-karier",
+            "instructor_email": "demo.instructor.nadia@example.test",
+            "level": "all_levels",
+            "price_idr": 179000,
+            "status": "published",
+            "summary": "Susun backlog, sprint, dan prioritas pekerjaan.",
+            "thumbnail_url": "/images/demo-courses/demo-project-management-dengan-agile.svg",
+            "days_old": 17
+        },
+        {
+            "title": "Digital Marketing untuk UMKM",
+            "slug": "demo-digital-marketing-untuk-umkm",
+            "category_slug": "demo-bisnis-karier",
+            "instructor_email": "demo.instructor.nadia@example.test",
+            "level": "beginner",
+            "price_idr": 99000,
+            "status": "published",
+            "summary": "Rancang strategi konten dan pengukuran kampanye.",
+            "thumbnail_url": "/images/demo-courses/demo-digital-marketing-untuk-umkm.svg",
+            "days_old": 16
+        },
+        {
+            "title": "Presentasi dan Komunikasi Profesional",
+            "slug": "demo-presentasi-dan-komunikasi-profesional",
+            "category_slug": "demo-bisnis-karier",
+            "instructor_email": "demo.instructor.nadia@example.test",
+            "level": "all_levels",
+            "price_idr": 0,
+            "status": "published",
+            "summary": "Susun presentasi dan komunikasikan ide secara efektif.",
+            "thumbnail_url": "/images/demo-courses/demo-presentasi-dan-komunikasi-profesional.svg",
+            "days_old": 15
+        },
+        {
+            "title": "Linux Server untuk Administrator",
+            "slug": "demo-linux-server-untuk-administrator",
+            "category_slug": "demo-infrastruktur-keamanan",
+            "instructor_email": "demo.instructor.andi@example.test",
+            "level": "intermediate",
+            "price_idr": 279000,
+            "status": "published",
+            "summary": "Kelola layanan Linux, permission, dan monitoring.",
+            "thumbnail_url": "/images/demo-courses/demo-linux-server-untuk-administrator.svg",
+            "days_old": 14
+        },
+        {
+            "title": "MikroTik: Routing, Firewall, dan VLAN",
+            "slug": "demo-mikrotik-routing-firewall-dan-vlan",
+            "category_slug": "demo-infrastruktur-keamanan",
+            "instructor_email": "demo.instructor.andi@example.test",
+            "level": "intermediate",
+            "price_idr": 299000,
+            "status": "published",
+            "summary": "Bangun segmentasi jaringan dan troubleshooting.",
+            "thumbnail_url": "/images/demo-courses/demo-mikrotik-routing-firewall-dan-vlan.svg",
+            "days_old": 13
+        },
+        {
+            "title": "Docker & Deployment Aplikasi",
+            "slug": "demo-docker-deployment-aplikasi",
+            "category_slug": "demo-infrastruktur-keamanan",
+            "instructor_email": "demo.instructor.andi@example.test",
+            "level": "intermediate",
+            "price_idr": 259000,
+            "status": "pending_review",
+            "summary": "Pelajari Docker Compose, image, dan deployment aman.",
+            "thumbnail_url": "/images/demo-courses/demo-docker-deployment-aplikasi.svg",
+            "days_old": 12
+        },
+        {
+            "title": "Audit Keamanan Aplikasi Web",
+            "slug": "demo-audit-keamanan-aplikasi-web",
+            "category_slug": "demo-infrastruktur-keamanan",
+            "instructor_email": "demo.instructor.andi@example.test",
+            "level": "advanced",
+            "price_idr": 399000,
+            "status": "draft",
+            "summary": "Kenali risiko autentikasi, otorisasi, dan input.",
+            "thumbnail_url": "/images/demo-courses/demo-audit-keamanan-aplikasi-web.svg",
+            "days_old": 11
+        }
+    ]
 }

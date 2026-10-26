@@ -69,7 +69,8 @@ class Course extends Model
         $query->where('status', CourseStatus::Published)
             ->whereNotNull('published_at')
             ->where('published_at', '<=', now())
-            ->whereRelation('instructor', 'status', InstructorStatus::Approved);
+            ->whereRelation('instructor', 'status', InstructorStatus::Approved)
+            ->whereRelation('category', 'is_active', true);
     }
 
     public function getRouteKeyName(): string

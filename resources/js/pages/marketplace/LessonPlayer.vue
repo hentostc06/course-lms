@@ -59,13 +59,15 @@ function complete(): void {
                 <p class="text-sm font-bold text-market-primary">
                     {{ course.title }}
                 </p>
-                <h1 class="font-display mt-3 text-3xl font-black leading-tight tracking-tight">
+                <h1
+                    class="font-display mt-3 text-3xl leading-tight font-black tracking-tight"
+                >
                     {{ lesson.title }}
                 </h1>
 
                 <div
                     v-if="lesson.available"
-                    class="mt-8 max-w-3xl whitespace-pre-wrap break-words text-base leading-8 text-market-ink"
+                    class="mt-8 max-w-3xl text-base leading-8 break-words whitespace-pre-wrap text-market-ink"
                 >
                     {{ lesson.content }}
                 </div>
@@ -75,7 +77,8 @@ function complete(): void {
                     class="mt-8 border border-market-border bg-market-sage p-6 text-market-muted"
                 >
                     <p class="font-bold text-market-ink">
-                        Materi {{ lesson.type === 'video' ? 'video' : 'dokumen' }}
+                        Materi
+                        {{ lesson.type === 'video' ? 'video' : 'dokumen' }}
                         belum tersedia
                     </p>
                     <p class="mt-2 text-sm leading-6">
@@ -100,9 +103,7 @@ function complete(): void {
                 class="border border-market-border bg-market-surface p-5 lg:self-start"
                 aria-label="Daftar materi"
             >
-                <h2 class="font-display mb-5 text-xl font-bold">
-                    Kurikulum
-                </h2>
+                <h2 class="font-display mb-5 text-xl font-bold">Kurikulum</h2>
 
                 <div
                     v-for="section in sections"
@@ -116,7 +117,11 @@ function complete(): void {
                         :key="item.id"
                         :href="`/learn/${course.slug}/${item.id}`"
                         class="mt-2 flex min-h-11 items-center gap-3 px-2 py-2 text-sm hover:bg-market-sage"
-                        :class="item.id === lesson.id ? 'bg-market-sage font-bold' : ''"
+                        :class="
+                            item.id === lesson.id
+                                ? 'bg-market-sage font-bold'
+                                : ''
+                        "
                     >
                         <CheckCircle2
                             v-if="item.completed"

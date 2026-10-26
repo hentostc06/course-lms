@@ -13,7 +13,7 @@ class Category extends Model
     /** @use HasFactory<CategoryFactory> */
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'description', 'is_active', 'sort_order'];
+    protected $fillable = ['name', 'slug', 'description', 'is_active', 'sort_order', 'image_path'];
 
     /** @return HasMany<Course, $this> */
     public function courses(): HasMany

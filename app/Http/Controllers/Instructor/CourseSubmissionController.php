@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Instructor;
 
 use App\Domain\Catalog\Enums\CourseStatus;
+use App\Domain\Catalog\Actions\EnsureCoursePublishable;
 use App\Domain\Catalog\Models\Course;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -19,9 +20,7 @@ class CourseSubmissionController extends Controller
         DB::transaction(function () use ($course, $request): void {
             $course = Course::query()->lockForUpdate()->findOrFail($course->id);
             abort_unless($request->user()->can('submit', $course), 403);
-            if (! $course->sections()->whereHas('lessons')->exists()) {
-                throw ValidationException::withMessages(['curriculum' => 'Tambahkan minimal satu materi sebelum mengajukan review.']);
-            }
+            app(EnsureCoursePublishable::class)->handle($course);
             $previous = $course->status->value;
             $course->forceFill([
                 'status' => CourseStatus::PendingReview,

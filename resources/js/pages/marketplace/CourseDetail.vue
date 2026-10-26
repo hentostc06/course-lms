@@ -5,7 +5,12 @@ import { BookOpen, Check, Clock3, Globe2, LockKeyhole } from '@lucide/vue';
 import { formatDuration, formatIdr, formatLessonDuration } from '@/lib/catalog';
 import type { CourseDetail } from '@/types/catalog';
 
-const props = defineProps<{ course: CourseDetail }>();
+const props = defineProps<{
+    course: CourseDetail;
+    isAuthenticated: boolean;
+    canEnroll: boolean;
+    enrolled: boolean;
+}>();
 
 function enroll(): void {
     router.post(`/courses/${props.course.slug}/enroll`);
@@ -118,8 +123,24 @@ const lessonType: Record<string, string> = {
                         <p class="mt-5 text-2xl font-bold tracking-[-0.025em]">
                             {{ formatIdr(course.priceIdr) }}
                         </p>
+                        <Link
+                            v-if="enrolled"
+                            href="/my-learning"
+                            class="mt-4 flex min-h-12 w-full items-center justify-center rounded-market-sm bg-market-ink px-4 text-sm font-bold text-white hover:bg-market-primary"
+                        >
+                            Lanjutkan belajar
+                        </Link>
+                        <Link
+                            v-else-if="
+                                course.priceIdr === 0 && !isAuthenticated
+                            "
+                            :href="`/courses/${course.slug}/join`"
+                            class="mt-4 flex min-h-12 w-full items-center justify-center rounded-market-sm bg-market-ink px-4 text-sm font-bold text-white hover:bg-market-primary"
+                        >
+                            Masuk untuk mengikuti kursus
+                        </Link>
                         <button
-                            v-if="course.priceIdr === 0"
+                            v-else-if="course.priceIdr === 0 && canEnroll"
                             type="button"
                             class="mt-4 min-h-12 w-full rounded-market-sm bg-market-ink px-4 text-sm font-bold text-white hover:bg-market-primary"
                             @click="enroll"
@@ -132,7 +153,11 @@ const lessonType: Record<string, string> = {
                             disabled
                             class="mt-4 min-h-12 w-full cursor-not-allowed rounded-market-sm bg-market-muted px-4 text-sm font-semibold text-white opacity-80"
                         >
-                            Pembelian belum tersedia
+                            {{
+                                course.priceIdr === 0
+                                    ? 'Hanya akun siswa yang dapat mengikuti kursus'
+                                    : 'Pembelian belum tersedia'
+                            }}
                         </button>
                         <p
                             v-if="course.priceIdr > 0"
@@ -166,7 +191,10 @@ const lessonType: Record<string, string> = {
                 >
                     Yang akan Anda pelajari
                 </h2>
-                <ul v-if="course.outcomes.length" class="mt-5 grid gap-4 sm:grid-cols-2">
+                <ul
+                    v-if="course.outcomes.length"
+                    class="mt-5 grid gap-4 sm:grid-cols-2"
+                >
                     <li
                         v-for="outcome in course.outcomes"
                         :key="outcome"
@@ -180,7 +208,9 @@ const lessonType: Record<string, string> = {
                         <span>{{ outcome }}</span>
                     </li>
                 </ul>
-                <p v-else class="mt-4 text-sm text-market-muted">Hasil belajar belum dirinci.</p>
+                <p v-else class="mt-4 text-sm text-market-muted">
+                    Hasil belajar belum dirinci.
+                </p>
             </section>
 
             <section aria-labelledby="description-heading">
@@ -249,10 +279,11 @@ const lessonType: Record<string, string> = {
                                     <span class="min-w-0 flex-1">{{
                                         lesson.title
                                     }}</span>
-                                    <span
+                                    <Link
                                         v-if="lesson.isPreview"
-                                        class="text-xs font-semibold text-market-primary"
-                                        >Pratinjau</span
+                                        :href="`/courses/${course.slug}/preview/${lesson.id}`"
+                                        class="text-xs font-semibold text-market-primary underline underline-offset-4"
+                                        >Baca pratinjau</Link
                                     >
                                     <span
                                         class="hidden text-xs text-market-muted sm:inline"

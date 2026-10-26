@@ -59,6 +59,11 @@ class ContentOperations extends AdminPage implements HasTable
                     ->visible(fn (Course $record): bool => $record->status === CourseStatus::PendingReview)
                     ->schema([Textarea::make('reason')->label('Alasan penolakan')->required()->minLength(10)->maxLength(2000)])
                     ->action(fn (Course $record, array $data) => app(ReviewCourse::class)->handle(auth()->user(), $record, 'reject', $data['reason'])),
+                Action::make('restore')->label('Pulihkan ke draf')->color('info')->requiresConfirmation()
+                    ->modalDescription('Pemulihan tidak langsung menerbitkan kembali. Kursus harus diajukan dan disetujui ulang melalui moderasi.')
+                    ->visible(fn (Course $record): bool => $record->status === CourseStatus::Archived)
+                    ->schema([Textarea::make('reason')->label('Alasan pemulihan')->required()->minLength(10)->maxLength(2000)])
+                    ->action(fn (Course $record, array $data) => app(ReviewCourse::class)->handle(auth()->user(), $record, 'restore', $data['reason'])),
                 Action::make('archive')->label('Arsipkan')->color('warning')->requiresConfirmation()
                     ->modalDescription('Kursus akan berhenti tampil di katalog publik. Riwayat moderasi tetap disimpan.')
                     ->visible(fn (Course $record): bool => $record->status === CourseStatus::Published)

@@ -32,16 +32,23 @@ defineProps<{
 
     <div class="social-login">
         <a class="google-btn" href="/auth/google/redirect">
-            <svg
-                viewBox="0 0 48 48"
-                width="19"
-                height="19"
-                aria-hidden="true"
-            >
-                <path fill="#EA4335" d="M24 9.5c3.5 0 6.7 1.2 9.2 3.6l6.9-6.9C35.9 2.4 30.4 0 24 0 14.6 5.4 6.5 13.2l8 6.2C12.5 13.5 17.9 9.5 24 9.5z"/>
-                <path fill="#4285F4" d="M46.9 24.6c0-1.6-.2-3.2-.5-4.6H24v9.1h12.8c-.6 3-2.3 5.5-4.9 7.2l7.5 5.8C43.8 38 46.9 32.1 46.9 24.6z"/>
-                <path fill="#FBBC05" d="M10.5 28.6c-.5-1.5-.8-3-.8-4.6s.3-3.1.8-4.6l-8-6.2C.9 16.5 0 20.1 0 24s.9 7.5 2.5 10.8l8-6.2z"/>
-                <path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.8-5.9l-7.5-5.8c-2.1 1.4-4.8 2.2-8.3 2.2-6.1 0-11.5-4-13.5-9.5l-8 6.2C6.5 42.6 14.6 48 24 48z"/>
+            <svg viewBox="0 0 48 48" width="19" height="19" aria-hidden="true">
+                <path
+                    fill="#EA4335"
+                    d="M24 9.5c3.5 0 6.7 1.2 9.2 3.6l6.9-6.9C35.9 2.4 30.4 0 24 0 14.6 5.4 6.5 13.2l8 6.2C12.5 13.5 17.9 9.5 24 9.5z"
+                />
+                <path
+                    fill="#4285F4"
+                    d="M46.9 24.6c0-1.6-.2-3.2-.5-4.6H24v9.1h12.8c-.6 3-2.3 5.5-4.9 7.2l7.5 5.8C43.8 38 46.9 32.1 46.9 24.6z"
+                />
+                <path
+                    fill="#FBBC05"
+                    d="M10.5 28.6c-.5-1.5-.8-3-.8-4.6s.3-3.1.8-4.6l-8-6.2C.9 16.5 0 20.1 0 24s.9 7.5 2.5 10.8l8-6.2z"
+                />
+                <path
+                    fill="#34A853"
+                    d="M24 48c6.5 0 11.9-2.1 15.8-5.9l-7.5-5.8c-2.1 1.4-4.8 2.2-8.3 2.2-6.1 0-11.5-4-13.5-9.5l-8 6.2C6.5 42.6 14.6 48 24 48z"
+                />
             </svg>
             <span>Masuk dengan Google</span>
         </a>
@@ -103,22 +110,16 @@ defineProps<{
                 <button
                     type="button"
                     class="peek"
-                    :aria-label="showPassword
-                        ? 'Sembunyikan kata sandi'
-                        : 'Tampilkan kata sandi'"
+                    :aria-label="
+                        showPassword
+                            ? 'Sembunyikan kata sandi'
+                            : 'Tampilkan kata sandi'
+                    "
                     :aria-pressed="showPassword"
                     @click="showPassword = !showPassword"
                 >
-                    <EyeOff
-                        v-if="showPassword"
-                        :size="18"
-                        aria-hidden="true"
-                    />
-                    <Eye
-                        v-else
-                        :size="18"
-                        aria-hidden="true"
-                    />
+                    <EyeOff v-if="showPassword" :size="18" aria-hidden="true" />
+                    <Eye v-else :size="18" aria-hidden="true" />
                 </button>
             </div>
             <InputError :message="errors.password" />
@@ -164,16 +165,21 @@ defineProps<{
     width: 100%;
     min-height: 49px;
     background: #fff;
-    border: 1px solid #AAA399;
+    border: 1px solid #aaa399;
     color: #171716;
-    font: 600 14px 'IBM Plex Sans', Arial, sans-serif;
+    font:
+        600 14px 'IBM Plex Sans',
+        Arial,
+        sans-serif;
     text-decoration: none;
-    transition: border-color .15s, background .15s;
+    transition:
+        border-color 0.15s,
+        background 0.15s;
 }
 
 .google-btn:hover {
     border-color: #171716;
-    background: #FDFCF9;
+    background: #fdfcf9;
 }
 
 .google-btn svg {
@@ -186,14 +192,14 @@ defineProps<{
     border: 0 !important;
     border-radius: 0 !important;
     background: transparent !important;
-    color: #655F57 !important;
+    color: #655f57 !important;
     box-shadow: none !important;
     font-family: 'IBM Plex Sans', Arial, sans-serif !important;
     font-size: 13px !important;
 }
 
 .passkey-area :deep(button:hover) {
-    background: #E9E4DC !important;
+    background: #e9e4dc !important;
     color: #171716 !important;
 }
 
@@ -202,9 +208,12 @@ defineProps<{
     align-items: center;
     gap: 14px;
     margin: 19px 0 22px;
-    color: #756F66;
-    font: 600 10px/1.4 'IBM Plex Sans', Arial, sans-serif;
-    letter-spacing: .1em;
+    color: #756f66;
+    font:
+        600 10px/1.4 'IBM Plex Sans',
+        Arial,
+        sans-serif;
+    letter-spacing: 0.1em;
 }
 
 .divider::before,
@@ -212,7 +221,7 @@ defineProps<{
     content: '';
     flex: 1;
     height: 1px;
-    background: #C9C4BA;
+    background: #c9c4ba;
 }
 
 .divider span {
@@ -247,18 +256,21 @@ defineProps<{
 .form-field input {
     width: 100%;
     height: 48px;
-    border: 1px solid #BFBAB1;
+    border: 1px solid #bfbab1;
     border-radius: 0;
     padding: 0 14px;
     outline: 0;
-    background: #FFFEFC;
+    background: #fffefc;
     color: #171716;
-    font: 400 15px 'IBM Plex Sans', Arial, sans-serif;
-    transition: border-color .15s;
+    font:
+        400 15px 'IBM Plex Sans',
+        Arial,
+        sans-serif;
+    transition: border-color 0.15s;
 }
 
 .form-field input::placeholder {
-    color: #847D72;
+    color: #847d72;
 }
 
 .form-field input:focus {
@@ -285,7 +297,7 @@ defineProps<{
     align-items: center;
     border: 0;
     background: transparent;
-    color: #655F57;
+    color: #655f57;
     cursor: pointer;
 }
 
@@ -298,7 +310,7 @@ defineProps<{
     align-items: center;
     gap: 9px;
     cursor: pointer;
-    color: #544E46;
+    color: #544e46;
     font-size: 13px;
     width: fit-content;
 }
@@ -321,24 +333,27 @@ defineProps<{
     color: #fff;
     border: 1px solid #171716;
     cursor: pointer;
-    font: 600 14px 'IBM Plex Sans', Arial, sans-serif;
-    transition: background .15s;
+    font:
+        600 14px 'IBM Plex Sans',
+        Arial,
+        sans-serif;
+    transition: background 0.15s;
 }
 
 .submit-btn:hover:not(:disabled) {
-    background: #D94A2F;
-    border-color: #D94A2F;
+    background: #d94a2f;
+    border-color: #d94a2f;
 }
 
 .submit-btn:disabled {
-    opacity: .65;
+    opacity: 0.65;
     cursor: progress;
 }
 
 .text-link,
 .switch-auth a {
     font-size: 13px;
-    color: #9A321F;
+    color: #9a321f;
     font-weight: 600;
     text-decoration: none;
 }
@@ -352,7 +367,7 @@ defineProps<{
 .switch-auth {
     margin: 22px 0 0;
     text-align: center;
-    color: #655F57;
+    color: #655f57;
     font-size: 13px;
 }
 
@@ -361,10 +376,10 @@ defineProps<{
 }
 
 .status-message {
-    border-left: 3px solid #D94A2F;
+    border-left: 3px solid #d94a2f;
     padding: 11px 14px;
     margin-bottom: 20px;
-    background: #ECE5DC;
+    background: #ece5dc;
     color: #332820;
     font-size: 13px;
 }

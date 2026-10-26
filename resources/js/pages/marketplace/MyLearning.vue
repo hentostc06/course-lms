@@ -20,18 +20,26 @@ defineProps<{
 
     <main class="mx-auto max-w-market px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
         <div class="mb-9 border-b border-market-border pb-7">
-            <p class="text-xs font-bold uppercase tracking-widest text-market-primary">
+            <p
+                class="text-xs font-bold tracking-widest text-market-primary uppercase"
+            >
                 Ruang belajar
             </p>
-            <h1 class="font-display mt-3 text-4xl font-black tracking-tight sm:text-5xl">
+            <h1
+                class="font-display mt-3 text-4xl font-black tracking-tight sm:text-5xl"
+            >
                 Kelas saya
             </h1>
             <p class="mt-3 text-market-muted">
-                Materi yang telah kamu ikuti dan progres artikel yang sudah diselesaikan.
+                Materi yang telah kamu ikuti dan progres artikel yang sudah
+                diselesaikan.
             </p>
         </div>
 
-        <div v-if="courses.length" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+            v-if="courses.length"
+            class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
             <article
                 v-for="course in courses"
                 :key="course.slug"
@@ -44,13 +52,16 @@ defineProps<{
                         :alt="course.title"
                         class="size-full object-cover"
                     />
-                    <div v-else class="flex size-full items-center justify-center">
+                    <div
+                        v-else
+                        class="flex size-full items-center justify-center"
+                    >
                         <BookOpen :size="40" />
                     </div>
                 </div>
 
                 <div class="p-6">
-                    <h2 class="font-display text-xl font-bold leading-tight">
+                    <h2 class="font-display text-xl leading-tight font-bold">
                         {{ course.title }}
                     </h2>
                     <p class="mt-2 line-clamp-2 text-sm text-market-muted">
@@ -58,7 +69,8 @@ defineProps<{
                     </p>
 
                     <p class="mt-5 text-sm font-semibold">
-                        {{ course.completed }} dari {{ course.total }} artikel selesai
+                        {{ course.completed }} dari {{ course.total }} artikel
+                        selesai
                     </p>
 
                     <div
@@ -71,9 +83,12 @@ defineProps<{
                         <div
                             class="h-full bg-market-primary"
                             :style="{
-                                width: `${course.total
-                                    ? 100 * course.completed / course.total
-                                    : 0}%`,
+                                width: `${
+                                    course.total
+                                        ? (100 * course.completed) /
+                                          course.total
+                                        : 0
+                                }%`,
                             }"
                         />
                     </div>

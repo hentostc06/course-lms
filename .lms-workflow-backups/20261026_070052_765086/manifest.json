@@ -1,0 +1,322 @@
+[
+  {
+    "path": "app/Domain/Catalog/Actions/EnsureCoursePublishable.php",
+    "old_sha256": null,
+    "new_sha256": "ead42c6c0d2fba8c82d0321051a30bdb3c6532f1a7441b8753611d35a9ca1ab3"
+  },
+  {
+    "path": "app/Filament/Admin/Pages/CurriculumManagement.php",
+    "old_sha256": null,
+    "new_sha256": "d5f365c77063880f79b02c18b78771508a2690f0a7ab90e6ea1c6b83f09aca2a"
+  },
+  {
+    "path": "docs/AUDIT_PATCH_MANIFEST_2026-10-26.json",
+    "old_sha256": null,
+    "new_sha256": "46b762d2de10642410138be59298af4231f4547875f1de44b30350f24bd24642"
+  },
+  {
+    "path": "docs/AUDIT_WORKFLOW_2026-10-26.md",
+    "old_sha256": null,
+    "new_sha256": "8030a746a53337c471b843d8dcedc2c7bfa6f5ccd840caa70f7cd43ca05791ef"
+  },
+  {
+    "path": "resources/js/actions/App/Filament/Admin/Pages/CurriculumManagement.ts",
+    "old_sha256": null,
+    "new_sha256": "9b4baeae0057841eca3a655357f82d17e2f135597dc660a429e5ab668ef0d9b0"
+  },
+  {
+    "path": "resources/js/pages/marketplace/LessonPreview.vue",
+    "old_sha256": null,
+    "new_sha256": "6aa23f3c5e64a2118fd2bcd2083aa4aa0985683f624c19cd20cbe107316d8159"
+  },
+  {
+    "path": "app/Domain/Catalog/Actions/ReviewCourse.php",
+    "old_sha256": "8dbf84fae0a1d050a54a8264dfa612d119cf824a971c80e841200a13435b9f48",
+    "new_sha256": "c45019808325cadc17b16b4b68dfedf045bb9fe9c997212df803bec594ecabbe"
+  },
+  {
+    "path": "app/Domain/Catalog/Actions/SubmitCourseForReview.php",
+    "old_sha256": "a6be78f0ac3ff4a01ce9d909eab8339551d9829c32de09f089433cdd03c8ca84",
+    "new_sha256": "b3d29df5848c11747a6b1cacdd233b001aa8a38a8e1b980749467d87f20dfceb"
+  },
+  {
+    "path": "app/Domain/Catalog/Models/Course.php",
+    "old_sha256": "39947b9564b46ec9f0f396400796533e8654d9a86fe38e2ffc8169394c1d8d1f",
+    "new_sha256": "8ca6f33eebf4e6a18fd932b16977fe3177253e0fcd13be4ae088013b5a80c501"
+  },
+  {
+    "path": "app/Domain/Catalog/Policies/CoursePolicy.php",
+    "old_sha256": "a2ab052dccc6add8fe757b35b8b9be84d8b036b819fd2cba03a94871cba2fb9c",
+    "new_sha256": "1a678b2c18e68e251d2e02a86bdc49e5c761d5f8ac74bc31f8bb541225fdfffb"
+  },
+  {
+    "path": "app/Filament/Admin/Pages/CatalogManagement.php",
+    "old_sha256": "ef39d402b260f359ad80e89e1a2987090012e2f932cd0224e5eb8149ab5a287d",
+    "new_sha256": "a41ca0fabc53450b61f86294da589043ea8e06e93269e45ab797031c986a454a"
+  },
+  {
+    "path": "app/Filament/Admin/Pages/ContentOperations.php",
+    "old_sha256": "1c916cd5b12e005869a6db78bdcec3b1aec33ce176b6190a5226658511870d00",
+    "new_sha256": "4f3212fc2e0d4cb3a5e53427db615ddbba07857343f9662b2278073eee2031e7"
+  },
+  {
+    "path": "app/Http/Controllers/Instructor/CourseSubmissionController.php",
+    "old_sha256": "b1d46489fb1f4bc5e59ba9032ec853e587f9e69857a7354108d22a934933796e",
+    "new_sha256": "f07a7baa16db060294fa445d5e43d02787749aab2d36c50bfa6d722f2ab6c385"
+  },
+  {
+    "path": "app/Http/Controllers/Instructor/CurriculumController.php",
+    "old_sha256": "098dc5666bd777781036aaf75682cfb2d2f18ac59054fafc22fe1baf93d8ef99",
+    "new_sha256": "4b5403dd4256108d0b2ed84343cd81b726ed194d20ed7209dbb2990b1016a03b"
+  },
+  {
+    "path": "app/Http/Controllers/Marketplace/CourseCatalogController.php",
+    "old_sha256": "4d53ce83832c9228c78c37b5a09cc878cb510a853fccf928204f3ae146ddeeb9",
+    "new_sha256": "2da7d7bee075882808fd5bbe243907ab579f027a2181c8bfed8f4f6a764c0c3a"
+  },
+  {
+    "path": "app/Http/Controllers/Moderation/CourseReviewController.php",
+    "old_sha256": "f810d797b4f60bdd9c6756f7cc08a8f1547b93d338d720bc838c2f34f5484c38",
+    "new_sha256": "694f8394e44865f56825ddfd15676ddeaad895ee47e1acaecfc7849dc0565eef"
+  },
+  {
+    "path": "database/seeders/marketplace-demo-data.json",
+    "old_sha256": "34d6d59eb3303c360aeb3c19036c95f9662a632e6d720b73507c72e4517b028d",
+    "new_sha256": "136b4d73e23ab8f90f419b3fc731cb1308168fce2f56331b33c33a34c3f9d871"
+  },
+  {
+    "path": "database/seeders/showcase-demo-data.json",
+    "old_sha256": "9ebbe277a37ba21e3277dfb98b5f6eb0c0f1edb50d34ee767de2679450cb38af",
+    "new_sha256": "cf596f67889c8ef38f2bdf72bc8caef5aa3591006c8e1d47960afd9cc289e8a1"
+  },
+  {
+    "path": "resources/css/app.css",
+    "old_sha256": "50b55102fac9805453438b83e4e0245c953181da90c50e57704ade7dc4ea8b17",
+    "new_sha256": "655198549ed45ddafacabcafc3619417d2ee4ea4ea3b374331a9456222b58416"
+  },
+  {
+    "path": "resources/js/actions/App/Filament/Admin/Pages/index.ts",
+    "old_sha256": "b0b4d88cdefd89eb55fd00f7331d530818fbf408b18841f94c97e18b12abfdeb",
+    "new_sha256": "8afd90f27e447d3ff086e8244ee75ed8a69c3bbe6bbd62259d2dde2839e16adb"
+  },
+  {
+    "path": "resources/js/actions/App/Http/Controllers/Instructor/CourseSubmissionController.ts",
+    "old_sha256": "41d8d2cfb216a5b9255b6c42623baf4ad36e46ce540e263e524c7b19c26df645",
+    "new_sha256": "9538c84cc29dda85477403e6d42adb2c854bd5406679d6eff119754af4b35dee"
+  },
+  {
+    "path": "resources/js/actions/App/Http/Controllers/Instructor/CurriculumController.ts",
+    "old_sha256": "6768b9033984b8aa8b763238fafa025a8554459d7110bb810057afce8919808d",
+    "new_sha256": "0312823f57fd05d12528574469780b6a89cff468700121978b192da1f5f3e301"
+  },
+  {
+    "path": "resources/js/actions/App/Http/Controllers/Instructor/InstructorCourseController.ts",
+    "old_sha256": "35acc88e7df5618e1d5acc161e0d4aa76a2685ab0b37692238c78381e218e0ea",
+    "new_sha256": "c76fe308925b3c38c2b9348fc6f3df65921532c6acdb507bfca4c791eb2dd277"
+  },
+  {
+    "path": "resources/js/actions/App/Http/Controllers/Learning/LearningController.ts",
+    "old_sha256": "ac9765dd235fde2bee5a513aa2564b5186c4f3522ff4fe856527320ee7a64d8c",
+    "new_sha256": "48548bf3a843dfb6084f4534d073d5e4e7977dee5529ed090334c096b59a84c5"
+  },
+  {
+    "path": "resources/js/actions/App/Http/Controllers/Marketplace/CourseCatalogController.ts",
+    "old_sha256": "397e2f594ec5dbe8dbcd49ceb4f137265cf3ab998842def5c71227c685e90715",
+    "new_sha256": "1f03d1aac572d52ecea295bf9673a1d3dde018dbbd1ed03a6bc304110ce9c573"
+  },
+  {
+    "path": "resources/js/actions/App/Http/Controllers/Moderation/CourseReviewController.ts",
+    "old_sha256": "5ed6da3794a2c76472f9b0108865f74a4e9ccde8d34e139eb6435199bef40e75",
+    "new_sha256": "cf62558b9b7e791465b105a9b4acd49af4889434f8a28077e4509a27096d83d7"
+  },
+  {
+    "path": "resources/js/actions/App/Http/Controllers/Moderation/InstructorReviewController.ts",
+    "old_sha256": "89dadd40420aa4025d5c4355e0d41848b5d67e29ca9b0ac6b7a05e7905776e34",
+    "new_sha256": "408f9b6bca6c42d3bd4cd9fc4e79a2378ad3a2f305ab09f1c8ffcffa3d13a4ec"
+  },
+  {
+    "path": "resources/js/actions/Inertia/index.ts",
+    "old_sha256": "b6b970d559263f810ca624766ad1e98d9f76f1c1729d510684cb6cca2ce24a81",
+    "new_sha256": "8f8ac32f5edc77c85a3ce163dc995c55e883c09a32da876f5ae63a4ce32c83ab"
+  },
+  {
+    "path": "resources/js/actions/Livewire/Features/SupportFileUploads/FilePreviewController.ts",
+    "old_sha256": "45340c79d99a71d169c614ab7730eadc6c8d66c8b52cc64df9343bd1fc9f9374",
+    "new_sha256": "570f3e3bad5845e9c5d8fca517fc12c0d435288bb1d3b06360aac81f760ae244"
+  },
+  {
+    "path": "resources/js/actions/Livewire/Features/SupportFileUploads/FileUploadController.ts",
+    "old_sha256": "551be6deee12697082dbabf37525a68ab1e5df39dd8a87f41cf1cea8eeadc044",
+    "new_sha256": "e8450d27cbb79ee9de5846a8c36ce06b155e5ec5ed83b733b075dffc3b3ee552"
+  },
+  {
+    "path": "resources/js/actions/Livewire/Mechanisms/FrontendAssets/FrontendAssets.ts",
+    "old_sha256": "3554b0c6af2f7e513d176c4b002ed9a7381c8108b6bf9323318f9d89c1945d63",
+    "new_sha256": "bd86538b4f67ee39d64bc406c961e09ad567cc95714bd8cdf4fa8527c76b8103"
+  },
+  {
+    "path": "resources/js/actions/Livewire/Mechanisms/HandleRequests/HandleRequests.ts",
+    "old_sha256": "3fe3bdadf7987d6b08c363858f30902873e0a52663a86af47f878d41181945fb",
+    "new_sha256": "c6ce41edbd04eed2b87ecfb3adfa0fbb8353f6c47349a387cf5b5cfa51b707d2"
+  },
+  {
+    "path": "resources/js/app.ts",
+    "old_sha256": "8b2726396d1053c4fd9c96cf904389fa34fbc8849fba6e1d01a99f750945fcae",
+    "new_sha256": "0a6e36f172c0110ff4f3970bab1edb0325ed83859ad82b767fa01ae41e235123"
+  },
+  {
+    "path": "resources/js/layouts/InstructorLayout.vue",
+    "old_sha256": "39170c70cc4c520d9ccfa84c8171c509c9d2518be398d04f3c16dd69ea894bee",
+    "new_sha256": "05e9fc805a8990a8cf94a833988ee25510539b2eba6d121179299ecdbc87dd72"
+  },
+  {
+    "path": "resources/js/layouts/MarketplaceLayout.vue",
+    "old_sha256": "346ffa2fd073c007874f47f14a77080df66d4fce2d8fb0052b98d7a387e0bf7b",
+    "new_sha256": "432d15425f57cc1c2a0da8a2ae9b172c8549c29953c88c899e368fffb5ecb5a5"
+  },
+  {
+    "path": "resources/js/layouts/auth/AuthSimpleLayout.vue",
+    "old_sha256": "f5028cdb8842015a241da6ad932a37c229bf4c83cc74fc05207d5bb1a52ec8eb",
+    "new_sha256": "4781fa3c574b0a7eedaf2cfa8bb84d485771b8f0b87896e84f93cc8cf7b3625a"
+  },
+  {
+    "path": "resources/js/pages/auth/Login.vue",
+    "old_sha256": "8a866d55c79cafafa21a4decbbc39b8b82c9023eeac45c4e615f5f7604278e01",
+    "new_sha256": "fbee6a9a00de0a732a23f87bd9f7f3a8ad6edf7eb3b7a93f32ee9b6dcac4ed26"
+  },
+  {
+    "path": "resources/js/pages/auth/Register.vue",
+    "old_sha256": "614a6ae53d51f2e21fe49482f96124d623a32a9d0aa11aee8d76980a93762fa8",
+    "new_sha256": "144d9794e509866d69f9c7553d3ce2ae1f37ba21c68ca725c2a8c9c979d94dc7"
+  },
+  {
+    "path": "resources/js/pages/instructor/CourseEditor.vue",
+    "old_sha256": "f0eabd5058d6937ea474b0d532a8ab28bad4fa5d14df4c87700bc2b53ee8a6bb",
+    "new_sha256": "e5223a12014755996bce14eb93c978fb3ca217d0020f3d337b3cf01c13935e26"
+  },
+  {
+    "path": "resources/js/pages/instructor/Courses.vue",
+    "old_sha256": "58f80ecdecb6d805c0ee65de8c81d5f68231aed0b6552a1af35809345038adbe",
+    "new_sha256": "41d7eb0f307ad3bb3c5a714bfa3bb5b976ef11c1caccbb1292b09cedb0033ce5"
+  },
+  {
+    "path": "resources/js/pages/instructor/Curriculum.vue",
+    "old_sha256": "1fe2bd38b74e79044592a1b15e50e3206f589874d84f6c7abaa37d17c9d61d8a",
+    "new_sha256": "9880da30e447ccd79e875efba92edd12e009deab05c53a0e7c378f0723fa3e5f"
+  },
+  {
+    "path": "resources/js/pages/instructor/Onboarding.vue",
+    "old_sha256": "176231907d50638df2f62bbb1d59a83be11a6bfc88f4c55611f39ccdc59bc278",
+    "new_sha256": "3c9c6d6e2d6f39acbbecf6cae325487190754e0c787ba64eecc4d1e790ac057d"
+  },
+  {
+    "path": "resources/js/pages/marketplace/Catalog.vue",
+    "old_sha256": "7972236cb316a0c19e0dc845bb4859e4904e7ce1e552335d559f430a9acf396e",
+    "new_sha256": "404a083c86f4708171c78c6cbcce146f038bb59ac081aefa3f53c3f34da4531d"
+  },
+  {
+    "path": "resources/js/pages/marketplace/CourseDetail.vue",
+    "old_sha256": "e5a15381afb1756c401948e3eec3b1929de53048446eddb40145c64a1e5b65dd",
+    "new_sha256": "6ad663e04c9b76e3eb09d3393788b47717507ef5ea1066bd9f88fdbfa947cee2"
+  },
+  {
+    "path": "resources/js/pages/marketplace/LessonPlayer.vue",
+    "old_sha256": "6e98a3e54251a5464e1075cf08bf77917291b75048f580e5ef57d92cb63105af",
+    "new_sha256": "2bd42fb609de4f054304fb2b960dd91808b335fc852546ab2f50c3e38fdb4d1b"
+  },
+  {
+    "path": "resources/js/pages/marketplace/MyLearning.vue",
+    "old_sha256": "e225ef2e55651957d2e0a6aec433f1d251b68911597efb353028f77d55134180",
+    "new_sha256": "6705a787e2961cc8cb8363501f8737da5672dc278f04e1085cb1d0c551d49303"
+  },
+  {
+    "path": "resources/js/pages/moderation/Categories.vue",
+    "old_sha256": "4219692fce83414249ff60db9611bf1147ae9a722ee34c4ee5785422bbb74adf",
+    "new_sha256": "30f4f46d30cbeecb14d1f3752503b8c5a1223fec351038fcb48d786d9b7e982d"
+  },
+  {
+    "path": "resources/js/pages/moderation/CourseReviews.vue",
+    "old_sha256": "74c585dd7a5854c3e747f6d85c93c0bf48b37a4a686fd05c4ffc6f134b969684",
+    "new_sha256": "b93613e20df0f3a0cf3a07a399b46ae9a3de9434af5371a84c76711c541ff1ac"
+  },
+  {
+    "path": "resources/js/pages/moderation/InstructorReviews.vue",
+    "old_sha256": "6d3a2627659260126d9d9b3d3aee62df0c67d314eaf8845b8215a80a18090a04",
+    "new_sha256": "0d7b7090c699091b21cf78129dab898b160c7c0df158240d2e54d269e4e58cc2"
+  },
+  {
+    "path": "resources/js/routes/courses/index.ts",
+    "old_sha256": "9f5891c678bc751b2bc67cc10b53f669ade62f6d3ec0137fd8909dce52cec4d6",
+    "new_sha256": "89afe4a8c72dfc82aa06a762088b7e58e52bd0d0d7f3d1a095a76397c111127e"
+  },
+  {
+    "path": "resources/js/routes/default-livewire/index.ts",
+    "old_sha256": "6ee54b65542bad71a687c490294c8857da4b89be39333185a4cc0dda511e1bab",
+    "new_sha256": "39dd41500a7cb0a4c28d8798cdd1fdbbe365ef08ac80d3768b0287f9ab31700c"
+  },
+  {
+    "path": "resources/js/routes/filament/admin/pages/index.ts",
+    "old_sha256": "32331b4f1a4992ca66acfa44021ea5ba6f23e28eaa55b7001207c9351ec6e449",
+    "new_sha256": "4198ff3a44e2f11f54815cea6819b326f18d08bc868309a3bb041db4892753e3"
+  },
+  {
+    "path": "resources/js/routes/index.ts",
+    "old_sha256": "d4479f95e1a2bf117b2600b1394d003d59eef01e437704a6fa7df886b984eedf",
+    "new_sha256": "af9168c3a33d70617e6309de106211968d08856708e489bbccb6a31f84eb15a5"
+  },
+  {
+    "path": "resources/js/routes/instructor/courses/index.ts",
+    "old_sha256": "8402431a5e12ac916d6ede09668d3a69442fe933cc4e554bdff5b2bdb5961d44",
+    "new_sha256": "e814077dda8ffa13b4f5ac02ecd431955ce7385f1635e41f5f3797893dbfa63c"
+  },
+  {
+    "path": "resources/js/routes/instructor/lessons/index.ts",
+    "old_sha256": "3328d5ea02c437b42686174ff5ecf5014662699546eec48ad1bf1b3a94b7ba24",
+    "new_sha256": "2005f39a69067d551182bdebbde949ecd9f611bbb5b6fdc318adc65535a08c48"
+  },
+  {
+    "path": "resources/js/routes/instructor/sections/index.ts",
+    "old_sha256": "a39ec35f14b2d9e7e16120f948d7aa7040f08cf2ca0ee660656921084359e3bc",
+    "new_sha256": "796d1435e1ba475459cbeeb546b7c495963d6b9fe9b880d75fab654fbb91bdfc"
+  },
+  {
+    "path": "resources/js/routes/learning/index.ts",
+    "old_sha256": "d3dbde202bcda4750e3c72f0b7fac11757e564828a60a9907909d2ffa1977d67",
+    "new_sha256": "e5fc68d2cb464b90290fa6236ef9efe13e80e4801d84c3d881f5197efab28c4e"
+  },
+  {
+    "path": "resources/js/routes/livewire/index.ts",
+    "old_sha256": "6818c89e92a4ad16e0c497240397a071ce0fd289563579cbe8740e1cd63c9787",
+    "new_sha256": "1b43cf24d8df6916552ff25d594e9ae5eddcf235c9b104c94e2ca2072c00684a"
+  },
+  {
+    "path": "resources/js/routes/moderation/courses/index.ts",
+    "old_sha256": "8dedfe4023bc3401be75eac579fdea9bf01aa2ebef56831bebb8cc7f0949ecd9",
+    "new_sha256": "58588e1edfc11a6acc943430a0b8d29d44fdd0074b4af29e09a881004282de0d"
+  },
+  {
+    "path": "resources/js/routes/moderation/instructors/index.ts",
+    "old_sha256": "4450452484156991224bc16aa0331e2c8dfeb0c141120f34ad1476384cc9424f",
+    "new_sha256": "58bcfce7c87fafb0ba18d6e74c77e7c7312de5dcc74172bef8d7c444cdcba001"
+  },
+  {
+    "path": "routes/console.php",
+    "old_sha256": "9adccc33e7dd400683e434774077c7fdb2f299c5712cedf16a43fdf56f2850fa",
+    "new_sha256": "eab25631c0df59e9c1104344e0e861b42a1c034f7a3932a86652418f9de936ad"
+  },
+  {
+    "path": "routes/web.php",
+    "old_sha256": "8626305440b72aac5ffa6f4c26056d9abec9369e350ed9846e7391f70fd2dc6b",
+    "new_sha256": "c7625bd161ff8bfb61d919228c013e8b9ae8651a92d259cfe6e39ff487109d78"
+  },
+  {
+    "path": "tests/Feature/Catalog/CourseCatalogTest.php",
+    "old_sha256": "037cc9891c23326abdd34e3df5ce46551b874a53385a3d22cfce7eac668d8f8f",
+    "new_sha256": "1a501f1c3b2f121fb2d0d1ffa9b3532bf156db7dbafcf6d6b9795095bc452ff6"
+  },
+  {
+    "path": "tests/Feature/Instructor/InstructorWorkflowTest.php",
+    "old_sha256": "ad554c012ed058bc1af029bf760b720502f63be69223558e12b57d51d765176e",
+    "new_sha256": "2f694bfdc7fe0033eb8ec65dfe958feb815543e4393d9a0d3df0c4a2818c8a9c"
+  }
+]

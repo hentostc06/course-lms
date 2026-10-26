@@ -19,7 +19,7 @@ class CourseReviewController extends Controller
         $this->ensureAdmin($request);
 
         $courses = Course::query()->where('status', CourseStatus::PendingReview)
-            ->with(['instructor.user:id,name', 'category:id,name'])
+            ->with(['instructor.user:id,name', 'category:id,name', 'sections.lessons'])
             ->oldest('updated_at')->get();
 
         return Inertia::render('moderation/CourseReviews', [
@@ -30,6 +30,16 @@ class CourseReviewController extends Controller
                 'instructor' => $course->instructor->user->name,
                 'category' => $course->category->name,
                 'updatedAt' => $course->updated_at?->toDateString(),
+                'sections' => $course->sections->map(fn ($section) => [
+                    'id' => $section->id,
+                    'title' => $section->title,
+                    'lessons' => $section->lessons->map(fn ($lesson) => [
+                        'id' => $lesson->id,
+                        'title' => $lesson->title,
+                        'type' => $lesson->type->value,
+                        'content' => $lesson->content,
+                    ])->values()->all(),
+                ])->values()->all(),
             ])->all(),
         ]);
     }

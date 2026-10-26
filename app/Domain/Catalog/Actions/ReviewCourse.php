@@ -5,7 +5,6 @@ namespace App\Domain\Catalog\Actions;
 use App\Domain\Catalog\Enums\CourseStatus;
 use App\Domain\Catalog\Models\Course;
 use App\Domain\Identity\Models\AdminAuditEvent;
-use App\Domain\Instructor\Enums\InstructorStatus;
 use App\Domain\Instructor\Models\InstructorProfile;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -18,23 +17,27 @@ class ReviewCourse
     {
         abort_unless($actor->hasVerifiedEmail() && $actor->hasRole('admin'), 403);
         $data = Validator::make(['decision' => $decision, 'reason' => $reason === null ? null : trim($reason)], [
-            'decision' => ['required', Rule::in(['approve', 'reject', 'archive'])],
+            'decision' => ['required', Rule::in(['approve', 'reject', 'archive', 'restore'])],
             'reason' => ['required_unless:decision,approve', 'nullable', 'string', 'min:10', 'max:2000'],
         ])->validate();
 
         DB::transaction(function () use ($actor, $course, $decision, $data): void {
             $instructor = InstructorProfile::query()->lockForUpdate()->findOrFail($course->instructor_id);
             $locked = Course::query()->lockForUpdate()->findOrFail($course->id);
-            $expected = $decision === 'archive' ? CourseStatus::Published : CourseStatus::PendingReview;
+            $expected = match ($decision) {
+                'archive' => CourseStatus::Published,
+                'restore' => CourseStatus::Archived,
+                default => CourseStatus::PendingReview,
+            };
             abort_unless($locked->status === $expected, 409, 'Status kursus sudah berubah. Muat ulang daftar.');
             if ($decision === 'approve') {
-                abort_unless($instructor->status === InstructorStatus::Approved, 422, 'Instruktur tidak aktif.');
-                abort_unless($locked->category->is_active && $locked->sections()->whereHas('lessons')->exists(), 422, 'Kategori harus aktif dan kurikulum harus berisi materi.');
+                app(EnsureCoursePublishable::class)->handle($locked);
             }
 
             $target = match ($decision) {
                 'approve' => CourseStatus::Published,
                 'reject' => CourseStatus::Rejected,
+                'restore' => CourseStatus::Draft,
                 default => CourseStatus::Archived,
             };
             $locked->forceFill([

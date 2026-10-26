@@ -11,9 +11,7 @@ const page = usePage();
     >
         <a
             href="#main-content"
-            class="sr-only focus:not-sr-only focus:fixed focus:left-4
-                   focus:top-4 focus:z-50 focus:bg-market-ink
-                   focus:px-5 focus:py-3 focus:text-white"
+            class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-market-ink focus:px-5 focus:py-3 focus:text-white"
         >
             Lewati ke konten
         </a>
@@ -22,19 +20,15 @@ const page = usePage();
             class="relative z-30 border-b border-market-border bg-market-canvas"
         >
             <div
-                class="mx-auto flex min-h-[76px] max-w-market
-                       items-center gap-5 px-5 sm:px-8 lg:px-10"
+                class="mx-auto flex min-h-[76px] max-w-market items-center gap-5 px-5 sm:px-8 lg:px-10"
             >
                 <Link
                     href="/"
                     aria-label="Course, beranda"
-                    class="inline-flex shrink-0 items-center gap-2.5
-                           font-display text-[21px] font-extrabold
-                           tracking-[-0.075em]"
+                    class="font-display inline-flex shrink-0 items-center gap-2.5 text-[21px] font-extrabold tracking-[-0.075em]"
                 >
                     <span
-                        class="grid h-9 w-9 place-items-center
-                               bg-market-ink text-market-canvas"
+                        class="grid h-9 w-9 place-items-center bg-market-ink text-market-canvas"
                     >
                         C
                     </span>
@@ -47,16 +41,14 @@ const page = usePage();
                 <form
                     action="/courses"
                     method="get"
-                    class="relative mx-3 hidden min-w-0
-                           max-w-[440px] flex-1 lg:block"
+                    class="relative mx-3 hidden max-w-[440px] min-w-0 flex-1 lg:block"
                 >
                     <label for="market-search" class="sr-only">
                         Cari kursus
                     </label>
 
                     <Search
-                        class="pointer-events-none absolute left-3
-                               top-1/2 -translate-y-1/2 text-market-muted"
+                        class="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-market-muted"
                         :size="17"
                         aria-hidden="true"
                     />
@@ -66,10 +58,7 @@ const page = usePage();
                         name="q"
                         type="search"
                         placeholder="Cari pelatihan atau keahlian"
-                        class="h-11 w-full border border-market-border
-                               bg-market-surface pl-10 pr-3 text-sm
-                               text-market-ink outline-none
-                               transition-colors focus:border-market-primary"
+                        class="h-11 w-full border border-market-border bg-market-surface pr-3 pl-10 text-sm text-market-ink transition-colors outline-none focus:border-market-primary"
                     />
                 </form>
 
@@ -79,8 +68,7 @@ const page = usePage();
                 >
                     <Link
                         href="/courses"
-                        class="inline-flex min-h-11 items-center px-2
-                               text-sm font-semibold hover:text-market-primary"
+                        class="inline-flex min-h-11 items-center px-2 text-sm font-semibold hover:text-market-primary"
                     >
                         Katalog
                     </Link>
@@ -94,8 +82,7 @@ const page = usePage();
                         </Link>
                         <a
                             href="/dashboard"
-                            class="inline-flex min-h-11 items-center px-2
-                                   text-sm font-semibold hover:text-market-primary"
+                            class="inline-flex min-h-11 items-center px-2 text-sm font-semibold hover:text-market-primary"
                         >
                             Dashboard
                         </a>
@@ -103,9 +90,7 @@ const page = usePage();
                         <a
                             href="/admin"
                             title="Khusus akun dengan role admin"
-                            class="hidden min-h-11 items-center px-2
-                                   text-sm font-semibold hover:text-market-primary
-                                   sm:inline-flex"
+                            class="hidden min-h-11 items-center px-2 text-sm font-semibold hover:text-market-primary sm:inline-flex"
                         >
                             Admin
                         </a>
@@ -114,24 +99,17 @@ const page = usePage();
                     <template v-else>
                         <Link
                             href="/login"
-                            class="inline-flex min-h-11 items-center px-2
-                                   text-sm font-semibold hover:text-market-primary"
+                            class="inline-flex min-h-11 items-center px-2 text-sm font-semibold hover:text-market-primary"
                         >
                             Masuk
                         </Link>
 
                         <Link
                             href="/register"
-                            class="inline-flex min-h-11 items-center gap-1.5
-                                   bg-market-ink px-4 text-sm font-semibold
-                                   text-white transition-colors
-                                   hover:bg-market-primary"
+                            class="inline-flex min-h-11 items-center gap-1.5 bg-market-ink px-4 text-sm font-semibold text-white transition-colors hover:bg-market-primary"
                         >
                             Daftar
-                            <ArrowUpRight
-                                :size="15"
-                                aria-hidden="true"
-                            />
+                            <ArrowUpRight :size="15" aria-hidden="true" />
                         </Link>
                     </template>
                 </nav>
@@ -142,18 +120,13 @@ const page = usePage();
             <slot />
         </main>
 
-        <footer
-            class="border-t border-market-border bg-market-canvas"
-        >
+        <footer class="border-t border-market-border bg-market-canvas">
             <div
-                class="mx-auto flex max-w-market flex-col gap-5
-                       px-5 py-9 sm:flex-row sm:items-end
-                       sm:justify-between sm:px-8 lg:px-10"
+                class="mx-auto flex max-w-market flex-col gap-5 px-5 py-9 sm:flex-row sm:items-end sm:justify-between sm:px-8 lg:px-10"
             >
                 <div>
                     <p
-                        class="font-display text-2xl font-extrabold
-                               tracking-[-.06em]"
+                        class="font-display text-2xl font-extrabold tracking-[-.06em]"
                     >
                         COURSE<span class="text-market-primary">.</span>
                     </p>
@@ -164,28 +137,17 @@ const page = usePage();
                 </div>
 
                 <div
-                    class="flex flex-wrap gap-x-6 gap-y-2 text-xs
-                           font-semibold uppercase tracking-[.08em]
-                           text-market-muted"
+                    class="flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold tracking-[.08em] text-market-muted uppercase"
                 >
-                    <Link
-                        href="/courses"
-                        class="hover:text-market-primary"
-                    >
+                    <Link href="/courses" class="hover:text-market-primary">
                         Katalog kursus
                     </Link>
 
-                    <Link
-                        href="/login"
-                        class="hover:text-market-primary"
-                    >
+                    <Link href="/login" class="hover:text-market-primary">
                         Masuk
                     </Link>
 
-                    <a
-                        href="/admin"
-                        class="hover:text-market-primary"
-                    >
+                    <a href="/admin" class="hover:text-market-primary">
                         Panel admin
                     </a>
                 </div>

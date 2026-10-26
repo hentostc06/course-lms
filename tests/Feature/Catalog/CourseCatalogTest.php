@@ -87,6 +87,31 @@ class CourseCatalogTest extends TestCase
                 ->missing('course.sections.0.lessons.0.content'));
     }
 
+    public function test_deactivated_category_hides_course_from_public_catalog(): void
+    {
+        $category = Category::factory()->create(['is_active' => false]);
+        $course = Course::factory()->published()->for($category)->create();
+        $this->get(route('courses.index'))->assertInertia(fn (Assert $page) => $page
+            ->where('courses.total', 0));
+        $this->get(route('courses.show', $course->slug))->assertNotFound();
+    }
+
+    public function test_preview_shows_only_explicitly_previewable_articles(): void
+    {
+        $course = Course::factory()->published()->create();
+        $section = CourseSection::factory()->for($course)->create();
+        $preview = Lesson::factory()->for($section, 'section')->create([
+            'type' => 'article', 'content' => 'Contoh artikel yang dapat dibaca publik.',
+            'is_preview' => true,
+        ]);
+        $this->get(route('courses.preview', [$course->slug, $preview]))
+            ->assertOk()->assertInertia(fn (Assert $page) => $page
+                ->component('marketplace/LessonPreview')
+                ->where('lesson.content', 'Contoh artikel yang dapat dibaca publik.'));
+        $preview->update(['is_preview' => false]);
+        $this->get(route('courses.preview', [$course->slug, $preview]))->assertNotFound();
+    }
+
     public function test_unpublished_course_detail_returns_not_found(): void
     {
         $course = Course::factory()->create();
