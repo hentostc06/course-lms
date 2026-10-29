@@ -45,13 +45,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('categories', [CategoryManagementController::class, 'store'])->name('categories.store');
     });
 
-    Route::get('dashboard', function () {
-        if (auth()->user()?->hasRole('admin')) {
-            return redirect('/admin');
-        }
-
-        return \Inertia\Inertia::render('Dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', \App\Http\Controllers\Auth\PortalController::class)->name('dashboard');
 });
 
 

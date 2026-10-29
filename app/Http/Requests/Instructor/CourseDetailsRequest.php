@@ -10,7 +10,11 @@ class CourseDetailsRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user() !== null;
+        // COURSE_SINGLE_LOGIN_V1: otorisasi sebelum validasi data.
+        $course = $this->route('course');
+        return $course instanceof \App\Domain\Catalog\Models\Course
+            ? ($this->user()?->can('update', $course) ?? false)
+            : ($this->user()?->can('create', \App\Domain\Catalog\Models\Course::class) ?? false);
     }
 
     /** @return array<string, list<mixed>> */

@@ -12,6 +12,7 @@ export type User = {
 
 export type Auth = {
     user: User;
+    portal?: { admin: boolean; student: boolean; instructor: boolean; studio: boolean };
 };
 
 export type Passkey = {

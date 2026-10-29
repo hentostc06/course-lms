@@ -19,12 +19,17 @@ defineOptions({
 
 defineProps<{
     status?: string;
+    loginReason?: string | null;
     canResetPassword: boolean;
 }>();
 </script>
 
 <template>
     <Head title="Masuk" />
+
+    <!-- COURSE_SINGLE_LOGIN_V1 -->
+    <p v-if="loginReason" class="status-message" role="status">{{ loginReason }}</p>
+    <p class="mb-5 text-sm leading-6 text-market-muted">Satu akun untuk belajar, mengajar, dan mengelola platform. Masuk untuk melanjutkan.</p>
 
     <p v-if="status" class="status-message" role="status">
         {{ status }}

@@ -48,7 +48,7 @@ class CourseCatalogController extends Controller
             ->withQueryString()
             ->through(fn (Course $course): array => $this->courseCard($course));
 
-        return Inertia::render('marketplace/Catalog', [
+        return Inertia::render($request->routeIs('home') ? 'marketplace/Landing' : 'marketplace/Catalog', [
             'courses' => $courses,
             'categories' => Category::query()->active()->orderBy('sort_order')->orderBy('name')->get(['name', 'slug', 'image_path'])
                 ->map(fn (Category $category): array => [

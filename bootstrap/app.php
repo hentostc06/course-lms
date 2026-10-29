@@ -15,15 +15,29 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // COURSE_SINGLE_LOGIN_V1
+        $middleware->redirectGuestsTo(fn (Request $request) => route('login'));
+        $middleware->redirectUsersTo('/dashboard');
+
         $middleware->encryptCookies(except: ['appearance', 'sidebar_state']);
 
         $middleware->web(append: [
+            \App\Http\Middleware\EnsurePortalAccess::class,
             HandleAppearance::class,
             HandleInertiaRequests::class,
             AddLinkHeadersForPreloadedAssets::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
+        // COURSE_SINGLE_LOGIN_V1: sesi habis tidak mengulang tindakan otomatis.
+        $exceptions->respond(function (\Symfony\Component\HttpFoundation\Response $response) {
+            $request = request();
+            if ($response->getStatusCode() === 419 && $request->hasSession()
+                && ! $request->expectsJson() && ! auth()->check()) {
+                return redirect()->route('login')->with('status', 'Sesi Anda berakhir. Silakan masuk kembali, lalu ulangi tindakan Anda.');
+            }
+            return $response;
+        });
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );

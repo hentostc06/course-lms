@@ -115,7 +115,8 @@ class GoogleAuthController
         Auth::login($user, true);
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard'));
+        // COURSE_SINGLE_LOGIN_V1
+        return redirect(app(\App\Domain\Identity\Services\AccessPortal::class)->afterLogin($request, route('dashboard')));
     }
 
     private function isConfigured(): bool

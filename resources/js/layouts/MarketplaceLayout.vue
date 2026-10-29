@@ -63,7 +63,7 @@ const page = usePage();
                 </form>
 
                 <nav
-                    class="ml-auto flex items-center gap-1 sm:gap-3"
+                    class="ml-auto flex flex-wrap items-center justify-end gap-1 sm:gap-3"
                     aria-label="Navigasi utama"
                 >
                     <Link
@@ -73,27 +73,12 @@ const page = usePage();
                         Katalog
                     </Link>
 
+                    <!-- COURSE_SINGLE_LOGIN_V1 -->
                     <template v-if="page.props.auth?.user">
-                        <Link
-                            href="/my-learning"
-                            class="inline-flex min-h-11 items-center px-2 text-sm font-semibold hover:text-market-primary"
-                        >
-                            Kelas saya
-                        </Link>
-                        <a
-                            href="/dashboard"
-                            class="inline-flex min-h-11 items-center px-2 text-sm font-semibold hover:text-market-primary"
-                        >
-                            Dashboard
-                        </a>
-
-                        <a
-                            href="/admin"
-                            title="Khusus akun dengan role admin"
-                            class="hidden min-h-11 items-center px-2 text-sm font-semibold hover:text-market-primary sm:inline-flex"
-                        >
-                            Admin
-                        </a>
+                        <Link v-if="page.props.auth?.portal?.student" href="/my-learning" class="inline-flex min-h-11 items-center px-2 text-sm font-semibold hover:text-market-primary">Kelas saya</Link>
+                        <Link v-if="page.props.auth?.portal?.instructor" :href="page.props.auth?.portal?.studio ? '/instructor/courses' : '/instructor/onboarding'" class="inline-flex min-h-11 items-center px-2 text-sm font-semibold hover:text-market-primary">{{ page.props.auth?.portal?.studio ? 'Studio instruktur' : 'Status instruktur' }}</Link>
+                        <a v-if="page.props.auth?.portal?.admin" href="/admin" class="inline-flex min-h-11 items-center px-2 text-sm font-semibold hover:text-market-primary">Panel admin</a>
+                        <Link v-if="!page.props.auth?.portal?.student && !page.props.auth?.portal?.instructor && !page.props.auth?.portal?.admin" href="/dashboard" class="inline-flex min-h-11 items-center px-2 text-sm font-semibold hover:text-market-primary">Area saya</Link>
                     </template>
 
                     <template v-else>

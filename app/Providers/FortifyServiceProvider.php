@@ -21,7 +21,14 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // COURSE_SINGLE_LOGIN_V1
+        foreach ([
+            \Laravel\Fortify\Contracts\LoginResponse::class,
+            \Laravel\Fortify\Contracts\TwoFactorLoginResponse::class,
+            \Laravel\Passkeys\Contracts\PasskeyLoginResponse::class,
+        ] as $contract) {
+            $this->app->singleton($contract, \App\Http\Responses\PortalLoginResponse::class);
+        }
     }
 
     /**
@@ -50,6 +57,8 @@ class FortifyServiceProvider extends ServiceProvider
     {
         Fortify::loginView(fn (Request $request) => Inertia::render('auth/Login', [
             'canResetPassword' => Features::enabled(Features::resetPasswords()),
+            'loginReason' => $request->session()->has('url.intended')
+                ? 'Silakan masuk untuk melanjutkan ke halaman yang Anda tuju.' : null,
             'status' => $request->session()->get('status'),
         ]));
 
